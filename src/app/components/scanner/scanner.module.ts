@@ -1,22 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ScannerComponent } from './scanner.component';
-import { IonicModule } from '@ionic/angular';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { FormsModule } from '@angular/forms';
 
+import { IonicModule } from '@ionic/angular';
 
+import { ScannerComponent } from './scanner.component';
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 
 @NgModule({
+  imports: [CommonModule, FormsModule, IonicModule],
   declarations: [ScannerComponent],
-  imports: [
-    IonicModule,
-    CommonModule,
-    FormsModule
-  ],
-  exports: [ScannerComponent],
   providers: [
     BarcodeScanner
   ],
+  exports: [ScannerComponent]
 })
-export class ScannerModule { }
+export class ScannerComponentModule { }

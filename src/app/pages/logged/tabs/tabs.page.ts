@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { BarcodeScanResult } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 import { ModalController } from '@ionic/angular';
 import { ScannerComponent } from 'src/app/components/scanner/scanner.component';
+import { VerifyQrComponent } from 'src/app/components/verify-qr/verify-qr.component';
 
 @Component({
   selector: 'app-tabs',
@@ -17,24 +19,29 @@ export class TabsPage implements OnInit {
 
   }
 
-
   async scanQR() {
-    const escaner = await this._modalCtrl.create({
+    const modal = await this._modalCtrl.create({
       component: ScannerComponent,
     });
-    escaner.onDidDismiss().then((respuesta: any) => {
+    modal.present();
+    modal.onDidDismiss().then((respuesta) => {
       if (respuesta && respuesta.data) {
-        console.log(respuesta)
-        const data = <any>respuesta.data;
+        const data = <BarcodeScanResult>respuesta.data;
         if (!data.cancelled && data.text) {
+          this.openVerify(data.text);
         }
       }
     });
-    return await escaner.present().then(() => {
-      setTimeout(() => {
-      }, 2000);
-    }).catch(() => {
-    });
   }
 
+  async openVerify(data: string) {
+    const modal = await this._modalCtrl.create({
+      component: VerifyQrComponent,
+      componentProps: {
+        data: data
+      }
+
+    });
+    modal.present();
+  }
 }

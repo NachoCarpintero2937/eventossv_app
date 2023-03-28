@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
+import { BarcodeScanner, BarcodeScannerOptions } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 import { ModalController } from '@ionic/angular';
 @Component({
   selector: 'app-scanner',
@@ -15,8 +15,10 @@ export class ScannerComponent implements OnInit {
       private _barcode: BarcodeScanner,
       private _modal: ModalController
     ) { }
+  ngOnInit(): void {
 
-  ngOnInit() {
+  }
+  ionViewDidEnter() {
     this.scanQR();
   }
 
@@ -29,6 +31,5 @@ export class ScannerComponent implements OnInit {
     }, (error) => {
       this._modal.dismiss(error);
     })
-
   }
 }

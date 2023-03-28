@@ -7,6 +7,8 @@ import { TabsPageRoutingModule } from './tabs-routing.module';
 
 import { TabsPage } from './tabs.page';
 import { ScannerComponent } from 'src/app/components/scanner/scanner.component';
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
+import { VerifyQrComponent } from 'src/app/components/verify-qr/verify-qr.component';
 
 @NgModule({
   imports: [
@@ -16,6 +18,7 @@ import { ScannerComponent } from 'src/app/components/scanner/scanner.component';
     TabsPageRoutingModule
   ],
   declarations: [TabsPage],
-  entryComponents: [ScannerComponent]
+  providers: [BarcodeScanner],
+  entryComponents: [ScannerComponent, VerifyQrComponent]
 })
 export class TabsPageModule { }
