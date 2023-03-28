@@ -1,0 +1,24 @@
+.scanner-btn {
+    border: 1px solid;
+    border-radius: 50%;
+    height: 70px !important;
+    --z-index: 99999;
+    background: orange;
+    position: absolute;
+    width: 70px;
+    margin: 20px
+}
+
+ion-icon {
+    color: white;
+}
+
+.event-tab {
+    margin-right: 70px;
+}
+
+
+// :host ::ng-deep ion-tab-button .button-native {
+//     width: 50px !important;
+//     height: 50px !important;
+// }
