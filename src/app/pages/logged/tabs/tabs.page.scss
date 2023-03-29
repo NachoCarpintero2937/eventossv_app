@@ -1,23 +1,28 @@
 .scanner-btn {
-    border: 1px solid;
+    // border: 1px solid;
     border-radius: 50%;
     height: 70px !important;
-    background: orange;
-    position: absolute;
-    width: 70px;
-    margin: 20px
+    // --background: orange;
+    --position: absolute;
+    --width: 70px;
+    z-index: 105 !important;
+
+    ion-icon {
+        font-size: 40px;
+    }
+
+    // box-shadow: 10px 10px 29px 1px rgba(230, 152, 18, 1);
 }
 
-ion-icon {
-    color: white;
+ion-tab-bar {
+    z-index: 1 !important;
+    ;
 }
 
 .event-tab {
-    margin-right: 70px;
+    margin-right: 20px;
 }
 
-
-// :host ::ng-deep ion-tab-button .button-native {
-//     width: 50px !important;
-//     height: 50px !important;
-// }
+.sales-tab {
+    margin-left: 20px;
+}

@@ -1,0 +1,29 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear"> <ion-icon name="chevron-back-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>
+      Eventos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-virtual-scroll [items]="events" approxItemHeight="320px">
+    <ion-item *virtualItem="let event" lines="none">
+      <ion-card class="card-event" [ngStyle]="{'background-image': 'url('+event?.img+')'}" *ngIf="!cargando">
+        <ion-card-header>
+          <ion-card-title>{{event?.name}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="label" [ngClass]="{'active': event?.active == 1, 'inactive' : event?.active == 0 }"></div>
+          <span class="description-event">
+            {{event?.description}}
+          </span>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-virtual-scroll>
+</ion-content>

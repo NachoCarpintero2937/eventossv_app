@@ -1,0 +1,270 @@
+ion-content {
+    --background: #ebebeb;
+}
+
+ion-card {
+    border-radius: 25px;
+    height: 150px;
+    position: relative;
+    top: 50px;
+    z-index: 1;
+}
+
+ion-card-title {
+    --color: white;
+    z-index: 2;
+
+}
+
+.card-home {
+    background-position: right;
+
+    .title-event {
+        color: white;
+        font-weight: 600;
+    }
+}
+
+.label {
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top: 35px tomato solid;
+    border-left: 35px tomato solid;
+    border-right: 35px transparent solid;
+    border-bottom: 35px transparent solid;
+    color: #fff;
+    z-index: 1;
+    top: -70px;
+    margin-left: -25px;
+    border-top-left-radius: 15px;
+}
+
+.active {
+    border-top: 35px #5cb359d9 solid !important;
+    border-left: 35px #5cb359d9 solid !important;
+}
+
+.inactive {
+    border-top: 35px #bd5b4a solid !important;
+    border-left: 35px #bd5b4a solid !important;
+}
+
+.ticket-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+
+    ion-label,
+    ion-icon {
+        font-size: 19px;
+        color: #626262;
+    }
+}
+
+
+
+// ticketttt
+
+
+.vertical-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.vertical-row .fill-parent {
+    flex: 1;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: #3c70a4;
+}
+
+/*
+  .container::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://image.flaticon.com/icons/svg/1290/1290220.svg);
+    opacity: 0.2;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+  */
+.ticket-cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.ticket {
+    position: relative;
+    background-color: white;
+    height: 7em;
+    width: 20em;
+    border-radius: 0.5em;
+
+    // transform: rotate(-10deg);
+}
+
+.brand-icon {
+    position: absolute;
+    left: -1.25em;
+    top: 2em;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.brand-icon img {
+    position: relative;
+    height: 2.5em;
+    right: 0.5em;
+    transform: rotate(270deg);
+}
+
+.brand-icon::before {
+    content: '';
+    position: absolute;
+    left: -0.9em;
+    top: -1em;
+    background-color: white;
+    height: 5em;
+    width: 5em;
+    border-radius: 50%;
+    box-shadow: 3px 2px 0px #ddd;
+}
+
+.separator {
+    position: absolute;
+    top: -0.5em;
+    right: 5.5em;
+    height: calc(100% + 1em);
+    width: 1.5em;
+}
+
+.separator::before {
+    content: '';
+    position: absolute;
+    top: 1em;
+    left: 0.5em;
+    height: calc(100% - 2em);
+    border-left: 1px dashed;
+    border-color: #33333385;
+}
+
+.round-cut-out {
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    background-color: #ebebeb;
+}
+
+.adjust-right-cut-out {
+    float: right;
+    margin-top: 3em;
+    margin-right: -0.5em;
+}
+
+.brand-name {
+    font-family: 'Saira Stencil One', cursive;
+    font-size: 25px;
+    position: relative;
+    top: 1.4em;
+    left: 2.5em;
+    color: orange;
+}
+
+.heading {
+    position: absolute;
+    left: 3em;
+    top: 1em;
+}
+
+.subheading {
+    position: absolute;
+    left: 8em;
+    bottom: 1em;
+    color: #333;
+    font-size: 0.4rem;
+    text-transform: capitalize;
+}
+
+.booking-date {
+    position: absolute;
+    top: 1em;
+    right: 7.75em;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.booking-date .month {
+    font-size: 0.6rem;
+}
+
+.barcode-container {
+    position: absolute;
+    right: 2.5em;
+    top: 2.5em;
+    transform: rotate(-90deg);
+}
+
+.barcode-container img {
+    width: 4em;
+}
+
+.ticket-count {
+    position: absolute;
+    top: 5.5em;
+    right: 1.5em;
+    font-size: 0.6rem;
+    transform: rotate(-90deg);
+    font-weight: bold;
+}
+
+.header-home {
+    background: linear-gradient(0deg, rgba(235, 235, 235, 1) 0%, rgba(241, 143, 13, 1) 100%);
+    z-index: 2;
+    position: relative;
+    padding: 1px;
+
+    .img-div-user {
+
+        border-radius: 50%;
+        margin: 15px;
+        display: flex;
+        align-items: center;
+
+        img {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+        }
+
+        .user-name {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            font-size: 15px;
+            font-family: sans-serif;
+            color: white;
+            font-weight: 900;
+        }
+
+        .skeleton {
+            border-radius: 0px;
+            width: 150px;
+            height: 30px;
+        }
+    }
+}

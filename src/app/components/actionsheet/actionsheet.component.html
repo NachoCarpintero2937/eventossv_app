@@ -1,3 +1,56 @@
-<p>
-  actionsheet works!
-</p>
+<ion-content>
+  <div class="item-header ion-padding">
+    <div class="div-btn-confirm">
+      <img src="./assets/img/logo.png" alt="">
+      <ion-button fill="clear" (click)="close()">Cerrar</ion-button>
+    </div>
+    <div class="background-item" lines="none">
+      <div class="avatar-name">
+        <ion-avatar slot="start">
+          <img alt="Silhouette of a person's head"
+            src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png" />
+        </ion-avatar>
+        <ion-label class="ion-label">
+          Nacho Carpintero
+        </ion-label>
+      </div>
+      <div class="event-active ">
+        <ion-label>
+          <ion-icon name="calendar-outline"></ion-icon>
+          Reggaeton viejo
+        </ion-label>
+        <div class="active">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ion-list>
+    <ion-item lines="none">
+      <ion-icon name="person-outline" slot="start"></ion-icon>
+      <ion-label>Ejemplo 1</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon name="home-outline" slot="start"></ion-icon>
+      <ion-label>Ejemplo 2</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon name="chatbubble-ellipses-outline" slot="start"></ion-icon>
+      <ion-label>Ejemplo 3</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon name="star" slot="start"></ion-icon>
+      <ion-label>Ejemplo 4</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon name="star" slot="start"></ion-icon>
+      <ion-label>Ejemplo 5</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

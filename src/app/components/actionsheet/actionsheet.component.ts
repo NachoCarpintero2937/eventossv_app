@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-actionsheet',
   templateUrl: './actionsheet.component.html',
   styleUrls: ['./actionsheet.component.scss'],
 })
-export class ActionsheetComponent  implements OnInit {
+export class ActionsheetComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalCtrl: ModalController) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
+
+  close() {
+    return this.modalCtrl.dismiss();
+  }
 
 }

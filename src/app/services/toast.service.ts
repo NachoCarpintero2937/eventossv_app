@@ -82,11 +82,9 @@ export class ToastService {
   async present() {
     this.isLoading = true;
     return await this._loadingCtrl.create({
-      duration: 2000,
       message: "Cargando",
     }).then(a => {
       a.present().then(() => {
-        // console.log('presented');
         if (!this.isLoading) {
           a.dismiss().then(() => console.log('abort presenting'));
         }

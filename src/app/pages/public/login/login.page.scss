@@ -176,3 +176,15 @@ body {
 .social-login__icon:hover {
     transform: scale(1.5);
 }
+
+ion-item {
+    // --background: white !important;
+}
+
+ion-input {
+    // --background: white !important;
+}
+
+ion-label {
+    --color: orange !important;
+}

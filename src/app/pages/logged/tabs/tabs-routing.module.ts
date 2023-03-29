@@ -8,12 +8,12 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'events',
+        path: 'landing',
         loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        path: 'events',
+        loadChildren: () => import('../events/events.module').then(m => m.EventsPageModule)
       },
       {
         path: 'tab3',
@@ -21,14 +21,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/logged/home/events',
+        redirectTo: '/logged/tabs/landing',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/logged/home/events',
+    redirectTo: '/logged/tabs/landing',
     pathMatch: 'full'
   }
 ];

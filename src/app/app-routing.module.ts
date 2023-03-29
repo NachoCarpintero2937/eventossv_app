@@ -15,7 +15,7 @@ const routes: Routes = [
     canActivate: [AuthService],
     children: [
       {
-        path: 'home',
+        path: 'tabs',
         loadChildren: () => import('./pages/logged/tabs/tabs.module').then(m => m.TabsPageModule)
       },
 

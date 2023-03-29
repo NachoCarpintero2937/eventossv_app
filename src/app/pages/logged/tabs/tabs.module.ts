@@ -9,16 +9,19 @@ import { TabsPage } from './tabs.page';
 import { ScannerComponent } from 'src/app/components/scanner/scanner.component';
 import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 import { VerifyQrComponent } from 'src/app/components/verify-qr/verify-qr.component';
+import { ActionsheetModule } from 'src/app/components/actionsheet/actionsheet.module';
+import { ActionsheetComponent } from 'src/app/components/actionsheet/actionsheet.component';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    TabsPageRoutingModule
+    TabsPageRoutingModule,
+    ActionsheetModule
   ],
   declarations: [TabsPage],
   providers: [BarcodeScanner],
-  entryComponents: [ScannerComponent, VerifyQrComponent]
+  entryComponents: [ScannerComponent, VerifyQrComponent, ActionsheetComponent]
 })
 export class TabsPageModule { }

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BarcodeScanResult } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 import { ModalController } from '@ionic/angular';
+import { ActionsheetComponent } from 'src/app/components/actionsheet/actionsheet.component';
 import { ScannerComponent } from 'src/app/components/scanner/scanner.component';
 import { VerifyQrComponent } from 'src/app/components/verify-qr/verify-qr.component';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-tabs',
@@ -11,7 +13,9 @@ import { VerifyQrComponent } from 'src/app/components/verify-qr/verify-qr.compon
 })
 export class TabsPage implements OnInit {
 
-  constructor(private _modalCtrl: ModalController) { }
+  constructor(
+    private _modalCtrl: ModalController,
+    private _toastSv: ToastService) { }
   ngOnInit(): void {
 
   }
@@ -20,16 +24,30 @@ export class TabsPage implements OnInit {
   }
 
   async scanQR() {
+    this._toastSv.present();
     const modal = await this._modalCtrl.create({
       component: ScannerComponent,
     });
-    modal.present();
+    modal.present().then(() => {
+      this._toastSv.dismiss();
+    })
     modal.onDidDismiss().then((respuesta) => {
       if (respuesta && respuesta.data) {
         const data = <BarcodeScanResult>respuesta.data;
         if (!data.cancelled && data.text) {
           this.openVerify(data.text);
         }
+      }
+    });
+  }
+  async openModal() {
+    const modal = await this._modalCtrl.create({
+      component: ActionsheetComponent,
+    });
+    modal.present();
+    modal.onDidDismiss().then((respuesta) => {
+      if (respuesta && respuesta.data) {
+
       }
     });
   }
@@ -40,7 +58,6 @@ export class TabsPage implements OnInit {
       componentProps: {
         data: data
       }
-
     });
     modal.present();
   }

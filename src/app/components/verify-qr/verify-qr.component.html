@@ -1,9 +1,10 @@
 <ion-content [fullscreen]="true">
-    <div class="btn-confim" [ngClass]="{'success': data.status, 'error' : !data.status}">
-        <ion-button (click)="confirm()" class="error">Confirmar</ion-button>
+    <div class="btn-confim" [ngClass]="{'success': data.status ==true, 'error' : data.status == false}">
+        <ion-button (click)="confirm()" class="default-btn"
+            [ngClass]="{'success': data.status ==true, 'error' : data.status == false}">Confirmar</ion-button>
     </div>
-    <div class="container" *ngIf="data?.status == false" [ngClass]="{'success': data.status, 'error' : !data.status}">
-        <div>
+    <div class="container" [ngClass]="{'success': data.status ==true, 'error' : data.status == false}">
+        <div *ngIf="data?.status == false">
             <svg class="checkmark error" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
                 <circle class="checkmark_circle_error" cx="26" cy="26" r="25" fill="none" />
                 <path class="checkmark_check" stroke-linecap="round" fill="none" d="M16 16 36 36 M36 16 16 36

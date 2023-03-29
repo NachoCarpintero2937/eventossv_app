@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IonicModule, IonModal } from '@ionic/angular';
+import { ActionsheetComponent } from './actionsheet.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [ActionsheetComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    IonicModule
+  ],
+  exports: [ActionsheetComponent]
 })
 export class ActionsheetModule { }

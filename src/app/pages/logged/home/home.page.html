@@ -1,15 +1,68 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-refresher class="ion-margin-top" slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200"
+    (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingText="" refreshingSpinner="circular">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div class="header-home">
+    <div class="img-div-user">
+      <img src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png" *ngIf="!cargando" alt="">
+      <ion-skeleton-text [animated]="true" style="width: 50px;height: 50px;" *ngIf="cargando"></ion-skeleton-text>
+      <span class="user-name" *ngIf="!cargando">
+        ¡Hola {{_authSv?.getCurrentUser()?.user?.name}}!
+      </span>
+      <ion-skeleton-text class="user-name skeleton" [animated]="true" *ngIf="cargando"></ion-skeleton-text>
+
+    </div>
+    <ion-card [ngStyle]="{'background-image': 'url('+event?.img+')'}" class="card-home" *ngIf="!cargando">
+      <ion-card-header>
+        <ion-card-title>Tu evento activo</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="label active"></div>
+        <span class="title-event">
+          {{event?.name}}
+        </span>
+      </ion-card-content>
+    </ion-card>
+    <ion-skeleton-text [animated]="true" class="card-home"
+      style="height:20vh;margin-left:20px;margin-right: 20px;border-radius:20px;width:90%;margin-top:20px"
+      *ngIf=" cargando"></ion-skeleton-text>
+  </div>
+
+  <ion-item lines="none" class="ticket-title">
+    <!-- <ion-icon name="ticket-outline" slot="start"></ion-icon> -->
+    <ion-label *ngIf="!cargando">Tus tickets activos</ion-label>
+    <ion-skeleton-text class="user-name skeleton" [animated]="true" *ngIf="cargando"
+      style="width:300px;height:25px;"></ion-skeleton-text>
+  </ion-item>
+  <div class="ticket-cont" *ngIf="!cargando">
+    <div class="ticket" *ngFor="let ticket of event?.tickets">
+      <div class="brand-icon">
+        <img src="https://eventossv.com/new/assets/img/logo_evento.png" alt="brand icon" />
+      </div>
+      <div class="vertical-row separator">
+        <div class="round-cut-out"></div>
+        <div class="fill-parent"></div>
+        <div class="round-cut-out"></div>
+      </div>
+      <div class="round-cut-out adjust-right-cut-out"></div>
+      <div class="heading">Ticket</div>
+      <div class="booking-date">
+        <div class="month">{{event?.date | date: 'MMM' }}</div>
+        <div class="date">{{event?.date | date: 'dd' }}</div>
+      </div>
+      <div class="brand-name">{{ticket?.name}}</div>
+      <div class="subheading">Este ticket es de muestra.</div>
+      <div class="barcode-container">
+        <img
+          src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeD0iMC4wMDAwbW0iIHk9IjAuMDAwMG1tIiB3aWR0aD0iNTkuMjY3MG1tIiBoZWlnaHQ9IjI2LjQ1ODBtbSIgdmlld0JveD0iMC4wMDAwIDAuMDAwMCA1OS4yNjcwIDI2LjQ1ODAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBzaGFwZS1yZW5kZXJpbmc9ImNyaXNwRWRnZXMiPgo8dGl0bGU+VEJhckNvZGUgLSAxMS4xMC4wLjE2MDE5PC90aXRsZT4KPGRlc2M+QmFyQ29kZSBsaWNlbnNlZCB0byBNRU06VEVDLUlUIERhdGVudmVyYXJiZWl0dW5nIEdtYkggSW50ZXJuYWwgTGljZW5zZTwvZGVzYz4KPGcgZmlsbD0icmdiKDAlLDAlLDAlKSI+CjwvZz4KPGcgZmlsbD0icmdiKDEwMCUsMTAwJSwxMDAlKSI+CjxyZWN0IHg9IjAuMDAwMCIgeT0iMC4wMDAwIiB3aWR0aD0iNTkuMjY3MCIgaGVpZ2h0PSIyNi40NTgwIiAvPgo8L2c+CjxnIGZpbGw9InJnYigwJSwwJSwwJSkiPgo8L2c+CjxnIGZpbGw9InJnYigwJSwwJSwwJSkiPgo8cmVjdCB4PSIwLjAwMDAiIHk9IjAuMDAwMCIgd2lkdGg9IjEuMDU4MyIgaGVpZ2h0PSIyMC4xODY0IiAvPgo8cmVjdCB4PSIxLjU4NzUiIHk9IjAuMDAwMCIgd2lkdGg9IjAuNTI5MiIgaGVpZ2h0PSIyMC4xODY0IiAvPgo8cmVjdCB4PSIzLjE3NTAiIHk9IjAuMDAwMCIgd2lkdGg9IjEuNTg3NSIgaGVpZ2h0PSIyMC4xODY0IiAvPgo8cmVjdCB4PSI1LjgyMDkiIHk9IjAuMDAwMCIgd2lkdGg9IjEuNTg3NSIgaGVpZ2h0PSIyMC4xODY0IiAvPgo8cmVjdCB4PSI4LjQ2NjciIHk9IjAuMDAwMCIgd2lkdGg9IjAuNTI5MiIgaGVpZ2h0PSIyMC4xODY0IiAvPgo8cmVjdCB4PSI5LjUyNTEiIHk9IjAuMDAwMCIgd2lkdGg9IjEuMDU4MyIgaGVpZ2h0PSIyMC4xODY0IiAvPgo8cmVjdCB4PSIxMS42NDE3IiB5PSIwLjAwMDAiIHdpZHRoPSIwLjUyOTIiIGhlaWdodD0iMjAuMTg2NCIgLz4KPHJlY3QgeD0iMTIuNzAwMSIgeT0iMC4wMDAwIiB3aWR0aD0iMS41ODc1IiBoZWlnaHQ9IjIwLjE4NjQiIC8+CjxyZWN0IHg9IjE1Ljg3NTEiIHk9IjAuMDAwMCIgd2lkdGg9IjEuMDU4MyIgaGVpZ2h0PSIyMC4xODY0IiAvPgo8cmVjdCB4PSIxNy40NjI2IiB5PSIwLjAwMDAiIHdpZHRoPSIwLjUyOTIiIGhlaWdodD0iMjAuMTg2NCIgLz4KPHJlY3QgeD0iMTkuNTc5MyIgeT0iMC4wMDAwIiB3aWR0aD0iMC41MjkyIiBoZWlnaHQ9IjIwLjE4NjQiIC8+CjxyZWN0IHg9IjIxLjE2NjgiIHk9IjAuMDAwMCIgd2lkdGg9IjEuMDU4MyIgaGVpZ2h0PSIyMC4xODY0IiAvPgo8cmVjdCB4PSIyMy4yODM1IiB5PSIwLjAwMDAiIHdpZHRoPSIxLjU4NzUiIGhlaWdodD0iMjAuMTg2NCIgLz4KPHJlY3QgeD0iMjUuNDAwMSIgeT0iMC4wMDAwIiB3aWR0aD0iMC41MjkyIiBoZWlnaHQ9IjIwLjE4NjQiIC8+CjxyZWN0IHg9IjI2LjQ1ODUiIHk9IjAuMDAwMCIgd2lkdGg9IjEuMDU4MyIgaGVpZ2h0PSIyMC4xODY0IiAvPgo8cmVjdCB4PSIyOS4xMDQzIiB5PSIwLjAwMDAiIHdpZHRoPSIxLjA1ODMiIGhlaWdodD0iMjAuMTg2NCIgLz4KPHJlY3QgeD0iMzAuNjkxOCIgeT0iMC4wMDAwIiB3aWR0aD0iMS4wNTgzIiBoZWlnaHQ9IjIwLjE4NjQiIC8+CjxyZWN0IHg9IjMyLjI3OTMiIHk9IjAuMDAwMCIgd2lkdGg9IjIuMTE2NyIgaGVpZ2h0PSIyMC4xODY0IiAvPgo8cmVjdCB4PSIzNC45MjUyIiB5PSIwLjAwMDAiIHdpZHRoPSIwLjUyOTIiIGhlaWdodD0iMjAuMTg2NCIgLz4KPHJlY3QgeD0iMzUuOTgzNSIgeT0iMC4wMDAwIiB3aWR0aD0iMC41MjkyIiBoZWlnaHQ9IjIwLjE4NjQiIC8+CjxyZWN0IHg9IjM4LjEwMDIiIHk9IjAuMDAwMCIgd2lkdGg9IjIuMTE2NyIgaGVpZ2h0PSIyMC4xODY0IiAvPgo8cmVjdCB4PSI0MC43NDYxIiB5PSIwLjAwMDAiIHdpZHRoPSIxLjU4NzUiIGhlaWdodD0iMjAuMTg2NCIgLz4KPHJlY3QgeD0iNDIuODYyNyIgeT0iMC4wMDAwIiB3aWR0aD0iMC41MjkyIiBoZWlnaHQ9IjIwLjE4NjQiIC8+CjxyZWN0IHg9IjQzLjkyMTEiIHk9IjAuMDAwMCIgd2lkdGg9IjEuMDU4MyIgaGVpZ2h0PSIyMC4xODY0IiAvPgo8cmVjdCB4PSI0Ni41NjY5IiB5PSIwLjAwMDAiIHdpZHRoPSIwLjUyOTIiIGhlaWdodD0iMjAuMTg2NCIgLz4KPHJlY3QgeD0iNDcuNjI1MyIgeT0iMC4wMDAwIiB3aWR0aD0iMi4xMTY3IiBoZWlnaHQ9IjIwLjE4NjQiIC8+CjxyZWN0IHg9IjUwLjgwMDMiIHk9IjAuMDAwMCIgd2lkdGg9IjAuNTI5MiIgaGVpZ2h0PSIyMC4xODY0IiAvPgo8cmVjdCB4PSI1Mi4zODc4IiB5PSIwLjAwMDAiIHdpZHRoPSIxLjA1ODMiIGhlaWdodD0iMjAuMTg2NCIgLz4KPHJlY3QgeD0iNTUuMDMzNiIgeT0iMC4wMDAwIiB3aWR0aD0iMS41ODc1IiBoZWlnaHQ9IjIwLjE4NjQiIC8+CjxyZWN0IHg9IjU3LjE1MDMiIHk9IjAuMDAwMCIgd2lkdGg9IjAuNTI5MiIgaGVpZ2h0PSIyMC4xODY0IiAvPgo8cmVjdCB4PSI1OC4yMDg3IiB5PSIwLjAwMDAiIHdpZHRoPSIxLjA1ODMiIGhlaWdodD0iMjAuMTg2NCIgLz4KPC9nPgo8ZyBmaWxsPSJyZ2IoMCUsMCUsMCUpIj4KPHRleHQgeD0iMjkuNjMzNSIgeT0iMjUuMjgyMSIgdHJhbnNmb3JtPSJyb3RhdGUoMzYwIDI5LjYzMzUsMjUuMjgyMSkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI1LjY0NDQiID4yNTQ2MDU1NDg5OTM1NDwvdGV4dD4KPC9nPgo8L3N2Zz4K"
+          alt="barcode" />
+      </div>
+      <div class="ticket-count">{{ticket?.price | currency}}</div>
+    </div>
+  </div>
+  <ion-skeleton-text style="height:15vh;margin-left:20px;margin-right: 20px;width:80%;margin-top:20px" [animated]="true"
+    *ngIf="cargando"></ion-skeleton-text>
 </ion-content>

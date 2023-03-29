@@ -32,13 +32,12 @@ export class LoginPage implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      this._toastSv.present().finally(() => {
-        this._apiSv.post("login", this.form.getRawValue()).then((r: any) => {
-          localStorage.setItem("user_data", JSON.stringify(r));
-          this._navCtrl.navigateRoot('/logged/home');
-        }).catch(e => {
-
-        })
+      this._toastSv.present();
+      this._apiSv.post("login", this.form.getRawValue()).then((r: any) => {
+        this._toastSv.dismiss();
+        localStorage.setItem("user_data", JSON.stringify(r));
+        this._navCtrl.navigateRoot('/logged/tabs');
+      }).catch(e => {
       })
     }
   }
