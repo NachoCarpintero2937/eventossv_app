@@ -1,0 +1,10 @@
+<div class="iniciales"
+  [ngClass]="{'paid-img': paid == 1 , 'no-paid-img' :paid == 0 ,'gift-img': paid == 2, 'no-paid' : paid ==null }"
+  [ngStyle]="{
+  'background-color':background,
+  'color':color,
+  'width':width,
+  'height':height 
+}">
+  {{text|iniciales}}
+</div>

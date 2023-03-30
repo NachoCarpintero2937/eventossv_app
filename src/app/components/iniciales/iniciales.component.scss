@@ -1,0 +1,24 @@
+.iniciales {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.paid-img {
+    border: 3px solid #3d8d3d;
+}
+
+.no-paid-img {
+    border: 3px solid #9e3f19;
+}
+
+.gift-img {
+    border: 3px solid #2b6db8;
+}
+
+.no-paid {
+    border: 1px solid;
+}

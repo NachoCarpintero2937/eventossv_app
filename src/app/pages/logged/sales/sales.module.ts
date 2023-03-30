@@ -7,6 +7,7 @@ import { SalesPage } from './sales.page';
 import { SalesPageRoutingModule } from './sales-routing.module';
 import { FilterModule } from 'src/app/components/filter/filter.module';
 import { FilterComponent } from 'src/app/components/filter/filter.component';
+import { InicialesModule } from 'src/app/components/iniciales/iniciales.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { FilterComponent } from 'src/app/components/filter/filter.component';
     FormsModule,
     ReactiveFormsModule,
     SalesPageRoutingModule,
-    FilterModule
+    FilterModule,
+    InicialesModule
   ],
   entryComponents: [FilterComponent],
   declarations: [SalesPage]

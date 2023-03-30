@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
@@ -15,9 +16,12 @@ export class LoginPage implements OnInit {
     private _fb: FormBuilder,
     private _apiSv: ApiService,
     private _navCtrl: NavController,
-    private _toastSv: ToastService) { }
+    private _toastSv: ToastService,
+    private _authSv: AuthService) { }
 
   ngOnInit() {
+    if (this._authSv.getCurrentUser())
+      this._navCtrl.navigateRoot('/logged/tabs')
   }
 
   form = this._fb.group({

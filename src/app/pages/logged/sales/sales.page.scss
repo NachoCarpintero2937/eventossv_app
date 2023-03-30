@@ -28,9 +28,9 @@ ion-header {
 }
 
 .icon {
-    width: 44px;
+    width: 40px;
     border-radius: 50%;
-    padding: 5px;
+    // padding: 5px;
 }
 
 .badge {
@@ -85,15 +85,28 @@ ion-header {
     }
 }
 
-.orange {
-    background: orange;
+.blue {
+    background: #3c528f;
 }
 
 ion-label {
     margin-left: 10px;
+    font-size: 18px !important;
 }
 
 .badge-color {
     color: white;
     background: #3d8d3d;
+}
+
+.paid-img {
+    border: 3px solid #3d8d3d;
+}
+
+.no-paid-img {
+    border: 3px solid #9e3f19;
+}
+
+.gift-img {
+    border: 3px solid #2b6db8;
 }

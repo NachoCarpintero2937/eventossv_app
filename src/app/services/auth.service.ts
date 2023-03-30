@@ -37,8 +37,8 @@ export class AuthService {
   }
   logout(msj?: any) {
     localStorage.removeItem("user_data");
-    this._navCtrl.navigateRoot(['/login'])
-
+    this._navCtrl.navigateRoot('/login');
+    this._toast.presentToast(msj);
   }
   getCurrentUser() {
     return JSON.parse(localStorage.getItem('user_data')!)

@@ -36,5 +36,8 @@ export class ActionsheetComponent implements OnInit {
   close() {
     return this.modalCtrl.dismiss();
   }
-
+  logout() {
+    this.close();
+    this._authSv.logout("Sesión cerrada correctamente");
+  }
 }

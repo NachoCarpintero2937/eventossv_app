@@ -17,6 +17,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-refresher class="ion-margin-top" slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200"
+    (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingText="" refreshingSpinner="circular">
+    </ion-refresher-content>
+  </ion-refresher>
   <form [formGroup]="form">
     <ion-item class="ion-margin">
       <ion-icon name="search-outline" slot="start"></ion-icon>
@@ -24,16 +29,29 @@
       <ion-input type="text" class="" formControlName="name" (keyup)="filter($event)"></ion-input>
     </ion-item>
   </form>
-  <ion-virtual-scroll [items]="sales" approxItemHeight="320px">
-    <ion-item *virtualItem="let sale" [ngClass]="{'active': sale?.paid == 1 , 'inactive' :sale?.paid == 0}">
+  <ion-virtual-scroll [items]="sales" approxItemHeight="320px" *ngIf="!cargando">
+    <ion-item *virtualItem="let sale">
       <div class="position">
-        <div class="badge orange">{{sale?.quantity}}</div>
-        <img class="icon" src="https://ionicframework.com/docs/img/demos/avatar.svg" alt="icon">
+        <div class="badge blue">{{sale?.quantity}}</div>
+        <app-iniciales color="white" [paid]="sale?.paid" background="#1956c596" [text]="sale?.name" width="40px"
+          height="40px" *ngIf="!cargando">
+        </app-iniciales>
       </div>
       <ion-label>
         {{sale?.name + " " + sale?.surname}}
       </ion-label>
-      <ion-badge color="success" class="badge-color">{{sale?.total == 0 ? 'GIFT' : ''}}</ion-badge>
+      <ion-badge color="success" class="badge-color">{{sale?.total == 0 ? 'GIFT' : sale.total | currency}}</ion-badge>
     </ion-item>
   </ion-virtual-scroll>
+  <div *ngFor="let sale of numbers">
+    <ion-item *ngIf="cargando">
+      <div class="position">
+        <ion-skeleton-text [animated]="true" style="width: 50px;height: 50px;border-radius:50%;margin-right: 10px;"
+          *ngIf="cargando"></ion-skeleton-text>
+      </div>
+      <ion-skeleton-text class="user-name skeleton" [animated]="true" *ngIf="cargando"
+        style="width:300px;height:25px;"></ion-skeleton-text>
+    </ion-item>
+
+  </div>
 </ion-content>

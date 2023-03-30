@@ -14,6 +14,7 @@ export class SalesPage implements OnInit {
   sales: any;
   cargando: boolean = false;
   events: any;
+  numbers: any;
   constructor
     (
       private _apiSv: ApiService,
@@ -21,13 +22,21 @@ export class SalesPage implements OnInit {
       private _fb: FormBuilder,
       private _navctrl: NavController,
       private _location: Location
-    ) { }
+    ) {
+    this.numbers = Array(20).fill(0).map((x, i) => i);
+  }
   form = this._fb.group({
     name: [null]
   })
   ngOnInit(): void {
     this.getSales();
     this.getEvents();
+  }
+  doRefresh(event: any) {
+    this.getSales();
+    setTimeout(() => {
+      event.target.complete();
+    }, 750);
   }
   getSales(filter: any = {}) {
     this.cargando = true;
@@ -71,6 +80,15 @@ export class SalesPage implements OnInit {
       this.events = r.events;
     }).catch(e => {
     })
+  }
+
+  generateRandomColor() {
+    let maxVal = 0xFFFFFFFF; // 16777215
+    let randomNumber: any = Math.random() * maxVal;
+    randomNumber = Math.floor(randomNumber);
+    randomNumber = randomNumber.toString(16);
+    let randColor = randomNumber.padStart(6, 0);
+    return `#${randColor.toUpperCase()}`
   }
 
 }

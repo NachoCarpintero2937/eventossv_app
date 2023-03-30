@@ -6,13 +6,27 @@
   </ion-refresher>
   <div class="header-home">
     <div class="img-div-user">
-      <img src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png" *ngIf="!cargando" alt="">
+      <app-iniciales color="white" background="#7e7e7e96" [text]="_authSv.getCurrentUser()?.user?.name" width="40px"
+        height="40px" *ngIf="!cargando">
+      </app-iniciales>
       <ion-skeleton-text [animated]="true" style="width: 50px;height: 50px;" *ngIf="cargando"></ion-skeleton-text>
       <span class="user-name" *ngIf="!cargando">
-        ¡Hola {{_authSv?.getCurrentUser()?.user?.name}}!
+        ¡Hola {{_authSv.getCurrentUser()?.user?.name}}!
       </span>
       <ion-skeleton-text class="user-name skeleton" [animated]="true" *ngIf="cargando"></ion-skeleton-text>
 
+    </div>
+    <div>
+
+    </div>
+    <div class="date-div">
+      <div class="div-date-event">
+        <ion-icon name="calendar-outline" class="text-date icon-date">
+        </ion-icon>
+      </div>
+      <span class="text-date">
+        Fecha del evento : {{event?.date | date : 'dd/MMMM'}}
+      </span>
     </div>
     <ion-card class="card-home" *ngIf="!cargando">
       <!-- <ion-card [ngStyle]="{'background-image': 'url('+event?.img+')'}" class="card-home" *ngIf="!cargando"> -->
@@ -51,7 +65,7 @@
       <div class="round-cut-out adjust-right-cut-out"></div>
       <div class="heading">Ticket</div>
       <div class="booking-date">
-        <div class="month">{{event?.date | date: 'MMM' }}</div>
+        <div class="month">{{event?.date | date: 'MMM': 'es' }}</div>
         <div class="date">{{event?.date | date: 'dd' }}</div>
       </div>
       <div class="brand-name">{{ticket?.name}}</div>
@@ -66,4 +80,22 @@
   </div>
   <ion-skeleton-text style="height:15vh;margin-left:20px;margin-right: 20px;width:80%;margin-top:20px" [animated]="true"
     *ngIf="cargando"></ion-skeleton-text>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color="primary">
+        <ion-icon name="ticket-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="primary">
+        <ion-icon name="calendar-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="primary">
+        <ion-icon name="gift-outline"></ion-icon>
+      </ion-fab-button>
+
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

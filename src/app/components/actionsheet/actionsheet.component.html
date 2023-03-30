@@ -29,27 +29,12 @@
   <ion-list>
     <ion-item lines="none">
       <ion-icon name="person-outline" slot="start"></ion-icon>
-      <ion-label>Ejemplo 1</ion-label>
+      <ion-button fill="clear" class="btn">Perfil</ion-button>
       <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
     </ion-item>
     <ion-item lines="none">
-      <ion-icon name="home-outline" slot="start"></ion-icon>
-      <ion-label>Ejemplo 2</ion-label>
-      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-icon name="chatbubble-ellipses-outline" slot="start"></ion-icon>
-      <ion-label>Ejemplo 3</ion-label>
-      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-icon name="star" slot="start"></ion-icon>
-      <ion-label>Ejemplo 4</ion-label>
-      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-icon name="star" slot="start"></ion-icon>
-      <ion-label>Ejemplo 5</ion-label>
+      <ion-icon name="exit-outline" slot="start"></ion-icon>
+      <ion-button fill="clear" class="btn" (click)="logout();">Cerrar sesión</ion-button>
       <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
     </ion-item>
   </ion-list>
