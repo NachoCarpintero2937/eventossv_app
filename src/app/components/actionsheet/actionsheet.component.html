@@ -11,13 +11,13 @@
             src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png" />
         </ion-avatar>
         <ion-label class="ion-label">
-          Nacho Carpintero
+          {{_authSv.getCurrentUser()?.user?.name}}
         </ion-label>
       </div>
       <div class="event-active ">
         <ion-label>
           <ion-icon name="calendar-outline"></ion-icon>
-          Reggaeton viejo
+          {{event?.name}}
         </ion-label>
         <div class="active">
 

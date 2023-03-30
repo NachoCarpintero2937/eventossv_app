@@ -17,7 +17,9 @@ ion-card-title {
 }
 
 .card-home {
-    background-position: right;
+    background-position: center;
+    background-size: 100%;
+    background-image: url('~src/assets/img/background.jpg');
 
     .title-event {
         color: white;
@@ -41,13 +43,13 @@ ion-card-title {
 }
 
 .active {
-    border-top: 35px #5cb359d9 solid !important;
-    border-left: 35px #5cb359d9 solid !important;
+    border-top: 40px #5cb359d9 solid !important;
+    border-left: 40px #5cb359d9 solid !important;
 }
 
 .inactive {
-    border-top: 35px #bd5b4a solid !important;
-    border-left: 35px #bd5b4a solid !important;
+    border-top: 40px #bd5b4a solid !important;
+    border-left: 40px #bd5b4a solid !important;
 }
 
 .ticket-title {

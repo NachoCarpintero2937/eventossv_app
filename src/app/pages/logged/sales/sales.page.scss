@@ -1,0 +1,99 @@
+ion-header {
+    border-bottom: 1px solid #ccc;
+
+    ion-toolbar {
+        ion-title {
+            text-align: center;
+            margin-right: 50px
+        }
+    }
+}
+
+.active {
+    border-right: 8px solid #3d8d3d;
+}
+
+.inactive {
+    border-right: 8px solid #9e3f19;
+}
+
+.avatar {
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+
+.position {
+    position: relative;
+    cursor: pointer;
+}
+
+.icon {
+    width: 44px;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.badge {
+    position: absolute;
+    top: -16px;
+    right: -18px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 1px 10px 0 10px;
+    border-radius: 500px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    z-index: 1;
+    transition: transform 0.15s, background-color 0.5s;
+}
+
+.position:hover .badge {
+    background-color: #000;
+    transform: scale(1.08);
+}
+
+.position:active .badge {
+    background-color: #555;
+    transform: scale(1);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.75);
+}
+
+@media (max-width: 600px) {
+    .position:active .badge {
+        transition: none;
+    }
+
+
+    .badge {
+        position: absolute;
+        top: 0px;
+        right: -5px;
+        min-width: 20px;
+        height: 20px;
+        padding: 0 7px;
+        font-size: 11px;
+        transition: transform 0.1s, background-color 0.2s;
+    }
+
+    .position:hover .badge {
+        transform: scale(1);
+    }
+}
+
+.orange {
+    background: orange;
+}
+
+ion-label {
+    margin-left: 10px;
+}
+
+.badge-color {
+    color: white;
+    background: #3d8d3d;
+}

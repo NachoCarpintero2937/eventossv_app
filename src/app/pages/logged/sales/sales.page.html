@@ -1,0 +1,39 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="back()"> <ion-icon name="chevron-back-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>
+      Ventas
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-button (click)="openFilters()" class="default-btn"><ion-icon
+            name="options-outline"></ion-icon></ion-button>
+
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="form">
+    <ion-item class="ion-margin">
+      <ion-icon name="search-outline" slot="start"></ion-icon>
+      <ion-label position="floating" class="label_input">Nombre</ion-label>
+      <ion-input type="text" class="" formControlName="name" (keyup)="filter($event)"></ion-input>
+    </ion-item>
+  </form>
+  <ion-virtual-scroll [items]="sales" approxItemHeight="320px">
+    <ion-item *virtualItem="let sale" [ngClass]="{'active': sale?.paid == 1 , 'inactive' :sale?.paid == 0}">
+      <div class="position">
+        <div class="badge orange">{{sale?.quantity}}</div>
+        <img class="icon" src="https://ionicframework.com/docs/img/demos/avatar.svg" alt="icon">
+      </div>
+      <ion-label>
+        {{sale?.name + " " + sale?.surname}}
+      </ion-label>
+      <ion-badge color="success" class="badge-color">{{sale?.total == 0 ? 'GIFT' : ''}}</ion-badge>
+    </ion-item>
+  </ion-virtual-scroll>
+</ion-content>

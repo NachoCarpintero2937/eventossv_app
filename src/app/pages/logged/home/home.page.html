@@ -14,19 +14,20 @@
       <ion-skeleton-text class="user-name skeleton" [animated]="true" *ngIf="cargando"></ion-skeleton-text>
 
     </div>
-    <ion-card [ngStyle]="{'background-image': 'url('+event?.img+')'}" class="card-home" *ngIf="!cargando">
+    <ion-card class="card-home" *ngIf="!cargando">
+      <!-- <ion-card [ngStyle]="{'background-image': 'url('+event?.img+')'}" class="card-home" *ngIf="!cargando"> -->
       <ion-card-header>
-        <ion-card-title>Tu evento activo</ion-card-title>
+        <!-- <ion-card-title>Tu evento activo</ion-card-title> -->
       </ion-card-header>
 
       <ion-card-content>
-        <div class="label active"></div>
+        <div class="label active" [ngClass]="{'inactive' : !event?.name}"></div>
         <span class="title-event">
-          {{event?.name}}
+          {{event?.name ? event?.name : 'No hay evento activo'}}
         </span>
       </ion-card-content>
     </ion-card>
-    <ion-skeleton-text [animated]="true" class="card-home"
+    <ion-skeleton-text [animated]="true"
       style="height:20vh;margin-left:20px;margin-right: 20px;border-radius:20px;width:90%;margin-top:20px"
       *ngIf=" cargando"></ion-skeleton-text>
   </div>

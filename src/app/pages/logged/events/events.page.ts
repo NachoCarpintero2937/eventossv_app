@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Events } from 'src/app/interfaces/events';
+import { Location } from '@angular/common';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-events',
@@ -11,7 +13,8 @@ export class EventsPage implements OnInit {
   cargando: boolean = false;
   events: Events[] = []
   constructor(
-    private _apiSv: ApiService
+    private _apiSv: ApiService,
+    private _navctrl: NavController
   ) { }
 
   ngOnInit(): void {
@@ -28,4 +31,7 @@ export class EventsPage implements OnInit {
     })
   }
 
+  back() {
+    this._navctrl.navigateRoot('logged/tabs/landing');
+  }
 }

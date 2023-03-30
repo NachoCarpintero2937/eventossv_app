@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel();">Cancelar</ion-button>
+    </ion-buttons>
+    <ion-title>Filtrar</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [strong]="true">Confirmar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label position="floating" class="label_input">Nombre</ion-label>
+      <ion-select formControlName="event_id">
+        <ion-select-option *ngFor="let event of events" [value]="event?.id">{{event?.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" class="label_input">Estado</ion-label>
+      <ion-select formControlName="status">
+        <ion-select-option value="1">Pago</ion-select-option>
+        <ion-select-option value="0">Impago</ion-select-option>
+        <ion-select-option value="2">Regalados</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </form>
+  <ion-button class="filter-btn" (click)="confirm();">
+    Filtrar
+  </ion-button>
+</ion-content>
