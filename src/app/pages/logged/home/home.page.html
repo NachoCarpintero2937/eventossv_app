@@ -5,28 +5,30 @@
     </ion-refresher-content>
   </ion-refresher>
   <div class="header-home">
-    <div class="img-div-user">
-      <app-iniciales color="white" background="#7e7e7e96" [text]="_authSv.getCurrentUser()?.user?.name" width="40px"
-        height="40px" *ngIf="!cargando">
-      </app-iniciales>
-      <ion-skeleton-text [animated]="true" style="width: 50px;height: 50px;" *ngIf="cargando"></ion-skeleton-text>
-      <span class="user-name" *ngIf="!cargando">
-        ¡Hola {{_authSv.getCurrentUser()?.user?.name}}!
-      </span>
-      <ion-skeleton-text class="user-name skeleton" [animated]="true" *ngIf="cargando"></ion-skeleton-text>
-
-    </div>
-    <div>
-
-    </div>
-    <div class="date-div">
-      <div class="div-date-event">
-        <ion-icon name="calendar-outline" class="text-date icon-date">
-        </ion-icon>
+    <div style="display: flex;flex-direction: column;">
+      <div class="img-div-user">
+        <app-iniciales color="white" background="#7e7e7e96" [text]="_authSv.getCurrentUser()?.user?.name" width="40px"
+          height="40px" *ngIf="!cargando">
+        </app-iniciales>
+        <ion-skeleton-text [animated]="true" style="width: 50px;height: 50px;" *ngIf="cargando"></ion-skeleton-text>
+        <span class="user-name" *ngIf="!cargando">
+          ¡Hola {{_authSv.getCurrentUser()?.user?.name}}!
+        </span>
+        <ion-skeleton-text class="user-name skeleton" [animated]="true" *ngIf="cargando"></ion-skeleton-text>
       </div>
-      <span class="text-date">
-        Fecha del evento : {{event?.date | date : 'dd/MMMM'}}
-      </span>
+      <div class="date-div">
+        <div class="div-date-event" *ngIf="!cargando">
+          <ion-icon name="calendar-outline" class="text-date icon-date">
+          </ion-icon>
+        </div>
+        <ion-skeleton-text [animated]="true" style="width: 30px;height: 30px;border-radius: 50%;margin-left:20px;"
+          *ngIf="cargando"></ion-skeleton-text>
+        <span class="text-date" *ngIf="!cargando">
+          Fecha del evento : {{event?.date | date : 'dd/MMMM'}}
+        </span>
+        <ion-skeleton-text class=" skeleton" style="margin-left:10px;width: 200px;height: 20px;" [animated]="true"
+          *ngIf="cargando"></ion-skeleton-text>
+      </div>
     </div>
     <ion-card class="card-home" *ngIf="!cargando">
       <!-- <ion-card [ngStyle]="{'background-image': 'url('+event?.img+')'}" class="card-home" *ngIf="!cargando"> -->

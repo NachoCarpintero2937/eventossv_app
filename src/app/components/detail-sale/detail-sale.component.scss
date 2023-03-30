@@ -1,0 +1,23 @@
+.name,
+.label_input {
+    text-transform: capitalize;
+    font-weight: 600;
+    color: #333;
+}
+
+.description {
+    text-transform: capitalize;
+}
+
+.div-qr {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+ion-item {
+    display: flex;
+    flex-direction: column;
+}

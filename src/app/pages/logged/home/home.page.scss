@@ -37,19 +37,19 @@ ion-card-title {
     border-bottom: 35px transparent solid;
     color: #fff;
     z-index: 1;
-    top: -70px;
+    top: -46px;
     margin-left: -25px;
     border-top-left-radius: 15px;
 }
 
 .active {
-    border-top: 40px #5cb359d9 solid !important;
-    border-left: 40px #5cb359d9 solid !important;
+    border-top: 30px rgba(92, 179, 89, 0.8509803922) solid !important;
+    border-left: 43px rgba(92, 179, 89, 0.8509803922) solid !important;
 }
 
 .inactive {
-    border-top: 40px #bd5b4a solid !important;
-    border-left: 40px #bd5b4a solid !important;
+    border-top: 30px #bd5b4a solid !important;
+    border-left: 43px #bd5b4a solid !important;
 }
 
 .ticket-title {
@@ -274,33 +274,32 @@ ion-card-title {
     display: flex;
     align-items: center;
 
-
     .div-date-event {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
         background-color: rgba(126, 126, 126, 0.59);
         padding: 5px;
         border: 1px solid white;
         letter-spacing: 1px;
         margin-right: 15px;
-        margin-left: 15px;
+        margin-left: 20px;
 
         .icon-date {
-
             font-weight: 600;
-            font-size: 20px;
+            font-size: 12px;
         }
 
-        .text-date {
-            color: white;
-            // font-size: 15px;
-            font-family: sans-serif;
-            font-weight: 900;
-        }
+    }
+
+    .text-date {
+        color: white;
+        font-size: 12px;
+        font-family: sans-serif;
+        font-weight: 900;
     }
 
 }

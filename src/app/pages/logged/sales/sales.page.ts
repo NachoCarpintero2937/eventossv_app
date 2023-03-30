@@ -4,6 +4,7 @@ import { ModalController, NavController } from '@ionic/angular';
 import { FilterComponent } from 'src/app/components/filter/filter.component';
 import { ApiService } from 'src/app/services/api.service';
 import { Location } from '@angular/common';
+import { DetailSaleComponent } from 'src/app/components/detail-sale/detail-sale.component';
 @Component({
   selector: 'app-sales',
   templateUrl: 'sales.page.html',
@@ -57,11 +58,6 @@ export class SalesPage implements OnInit {
     const modal = await this._modalCtrl.create({
       component: FilterComponent,
       componentProps: {
-        fields: {
-          name: '',
-          event_id: '',
-          status: '',
-        },
         events: this.events
       }
     });
@@ -81,7 +77,20 @@ export class SalesPage implements OnInit {
     }).catch(e => {
     })
   }
-
+  async detailSale(data: any) {
+    const modal = await this._modalCtrl.create({
+      component: DetailSaleComponent,
+      componentProps: {
+        data: data
+      }
+    });
+    modal.present();
+    modal.onDidDismiss().then((respuesta) => {
+      if (respuesta && respuesta.data) {
+        this.getSales(respuesta.data)
+      }
+    });
+  }
   generateRandomColor() {
     let maxVal = 0xFFFFFFFF; // 16777215
     let randomNumber: any = Math.random() * maxVal;

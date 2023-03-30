@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalle de venta</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close();">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item lines="none" class="ion-margin">
+    <app-iniciales color="white" [paid]="data?.paid" background="#1956c596" [text]="data?.name +' '+ data?.surname"
+      width="40px" height="40px">
+    </app-iniciales>
+    <ion-label class="ion-padding name">
+      {{data?.name +' '+ data?.surname}}
+    </ion-label>
+  </ion-item>
+  <form [formGroup]="form">
+    <ion-item class="background-item">
+      <ion-label class="label_input">#ID</ion-label>
+      <span class="description">
+        {{data?.id}}
+      </span>
+    </ion-item>
+    <ion-item class="background-item">
+      <ion-label class="label_input">Nombre</ion-label>
+      <span class="description">
+        {{data?.name}}
+      </span>
+    </ion-item>
+    <ion-item class="background-item">
+      <ion-label p class="label_input">Apellido</ion-label>
+      <span class="description">
+        {{data?.surname}}
+      </span>
+    </ion-item>
+    <ion-item class="background-item">
+      <ion-label class="label_input">Email</ion-label>
+      <span>
+        {{data?.email}}
+      </span>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label_input">Estado</ion-label>
+      <ion-badge>
+        {{data?.paid == 0 && data.total > 0 ? 'IMPAGO' : data.total == 0 || data.paid == 2 ? 'GIFT' : data.paid == 1 ?
+        'PAGO' : data.total < 0 && data.paid==0 ? 'GIFT' : '' }} </ion-badge> </ion-item>
+    <ion-item class="background-item">
+      <ion-label class="label_input">Code</ion-label>
+      <span>
+        {{data?.code}}
+      </span>
+    </ion-item>
+    <ion-item class="background-item">
+      <ion-label class="label_input">Fecha de compra</ion-label>
+      <span class="description">
+        {{data?.created_at | date: 'dd/MMM'}}
+      </span>
+    </ion-item>
+    <ion-item class="background-item">
+      <ion-label class="label_input">Total</ion-label>
+      <span class="description">
+        {{data?.total | currency}}
+      </span>
+    </ion-item>
+  </form>
+
+  <div class="div-qr">
+    <!-- <qrcode [qrdata]="'https://eventossv.com/new/#/logged/check/'+data?.id+'@'+data?.id" [width]="256"
+      [errorCorrectionLevel]="'M'"></qrcode> -->
+
+  </div>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="refresh-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
