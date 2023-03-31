@@ -112,7 +112,8 @@ ion-card-title {
     position: relative;
     background-color: white;
     height: 7em;
-    width: 20em;
+    width: 100%;
+    margin: 20px;
     border-radius: 0.5em;
 
     // transform: rotate(-10deg);
@@ -179,14 +180,14 @@ ion-card-title {
 .brand-name {
     font-size: 25px;
     position: relative;
-    top: 1.4em;
-    left: 2.5em;
+    top: 1.7em;
+    left: 0.5em;
     color: orange;
 }
 
 .heading {
     position: absolute;
-    left: 3em;
+    left: 1em;
     top: 1em;
 }
 
@@ -278,19 +279,20 @@ ion-card-title {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
-        background-color: rgba(126, 126, 126, 0.59);
+        background-color: white;
         padding: 5px;
-        border: 1px solid white;
+        border: 5px solid rgba(239, 162, 21, 0.5019607843);
         letter-spacing: 1px;
         margin-right: 15px;
-        margin-left: 20px;
+        margin-left: 15px;
 
         .icon-date {
             font-weight: 600;
-            font-size: 12px;
+            font-size: 16px;
+            color: orange !important;
         }
 
     }
