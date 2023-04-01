@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import { ApiService } from 'src/app/services/api.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-detail-sale',
@@ -11,7 +13,9 @@ export class DetailSaleComponent implements OnInit {
 
   constructor(
     private _fb: FormBuilder,
-    private _modalCtrl: ModalController) { }
+    private _modalCtrl: ModalController,
+    private _apiSv: ApiService,
+    private _toastSv: ToastService) { }
   data!: any;
   ngOnInit() {
     this.getFormValues();
@@ -43,6 +47,18 @@ export class DetailSaleComponent implements OnInit {
 
   close() {
     this._modalCtrl.dismiss();
+  }
+
+  resendEmail() {
+    this._toastSv.present()
+    this._apiSv._getAction({ sale_id: this.data.id }, "sale/reenviarTickets").then((r: any) => {
+      this._toastSv.dismiss()
+      if (r.status)
+        this._toastSv.presentSuccess("Tickets reenviados a la casilla " + this.data?.email);
+    }).catch(e => {
+      this._toastSv.dismiss();
+      this._toastSv.presentError("Hubo un problema con el servidor");
+    })
   }
 
 }

@@ -67,13 +67,18 @@
   </form>
 
   <div class="div-qr">
-    <!-- <qrcode [qrdata]="'https://eventossv.com/new/#/logged/check/'+data?.id+'@'+data?.id" [width]="256"
-      [errorCorrectionLevel]="'M'"></qrcode> -->
+    <div *ngFor="let qr of data?.tickets;let i = index" class="center-title-qr">
+      <ion-label>
+        Entrada N° {{i+1}}
+      </ion-label>
+      <qrcode [qrdata]="'https://eventossv.com/new/#/logged/check/'+qr?.id+'@'+qr?.id" [width]="256"
+        [errorCorrectionLevel]="'M'"></qrcode>
+    </div>
 
   </div>
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button>
+    <ion-fab-button (click)="resendEmail()">
       <ion-icon name="refresh-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>

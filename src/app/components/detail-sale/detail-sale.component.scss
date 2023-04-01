@@ -14,7 +14,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     margin: 10px;
+
+    .center-title-qr {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 }
 
 ion-item {
