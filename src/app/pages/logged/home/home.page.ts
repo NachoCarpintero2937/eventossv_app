@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { GiftEventComponent } from 'src/app/components/gift-event/gift-event.component';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastService } from 'src/app/services/toast.service';
@@ -12,7 +14,8 @@ export class HomePage implements OnInit {
   constructor(
     private apiSv: ApiService,
     private _toastSv: ToastService,
-    public _authSv: AuthService) { }
+    public _authSv: AuthService,
+    private _modalCtrl: ModalController) { }
   event: any;
   cargando: boolean = false;
   ngOnInit(): void {
@@ -40,5 +43,17 @@ export class HomePage implements OnInit {
     setTimeout(() => {
       event.target.complete();
     }, 750);
+  }
+
+  async openGift() {
+    const modal = await this._modalCtrl.create({
+      component: GiftEventComponent,
+    });
+    modal.present();
+    modal.onDidDismiss().then((respuesta) => {
+      if (respuesta && respuesta.data) {
+
+      }
+    });
   }
 }

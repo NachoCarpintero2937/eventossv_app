@@ -3,7 +3,7 @@
     <name>Eventos Sv</name>
     <description>Tickets rápidos, confiables y seguros</description>
     <author email="soporte@eventossv.com" href="http://eventossv.com/">Eventos Sv Team</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://localhost:8103" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -112,4 +112,5 @@
     <allow-navigation href="http://localhost:8100" sessionid="dab29671" />
     <allow-navigation href="http://localhost:8101" sessionid="cee20e86" />
     <allow-navigation href="http://localhost:8102" sessionid="df7b778f" />
+    <allow-navigation href="http://localhost:8103" sessionid="8a8a14d2" />
 </widget>
