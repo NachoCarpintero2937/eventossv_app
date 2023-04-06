@@ -12,7 +12,8 @@
 <ion-content [fullscreen]="true">
   <ion-virtual-scroll [items]="events" approxItemHeight="320px">
     <ion-item *virtualItem="let event" lines="none">
-      <ion-card class="card-event" [ngStyle]="{'background-image': 'url('+event?.img+')'}" *ngIf="!cargando">
+      <ion-card class="card-event" [ngStyle]="{'background-image': 'url('+event?.img+')'}" *ngIf="!cargando"
+        (click)="openCreateAndEditEvent(event)">
         <ion-card-header>
           <ion-card-title>{{event?.name}}</ion-card-title>
         </ion-card-header>
@@ -27,7 +28,7 @@
     </ion-item>
   </ion-virtual-scroll>
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button>
+    <ion-fab-button (click)="openCreateAndEditEvent()">
       <ion-icon name="add-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>

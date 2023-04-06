@@ -10,7 +10,7 @@
 
 <ion-content>
   <ion-card *ngFor="let ticket of event?.tickets" (click)="openCreateAndEditTicket(ticket)">
-    <div class="label" [ngClass]="{'inactive' : ticket?.active == 0, 'active' : ticket?.active == 1}"></div>
+    <div class="label" [ngClass]="{'inactive' : ticket?.available == 0, 'active' : ticket?.available == 1}"></div>
     <ion-card-header>
       <ion-card-title>{{ticket?.name}}</ion-card-title>
     </ion-card-header>

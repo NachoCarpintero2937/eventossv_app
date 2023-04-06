@@ -13,6 +13,10 @@ import { GiftEventComponent } from 'src/app/components/gift-event/gift-event.com
 import { GiftEventModule } from 'src/app/components/gift-event/gift-event.module';
 import { RouterModule } from '@angular/router';
 import { CreateTicketComponent } from 'src/app/components/create-ticket/create-ticket.component';
+import { CreateEventComponent } from 'src/app/components/create-event/create-event.component';
+import { CreateEventModule } from 'src/app/components/create-event/create-event.module';
+import { CreateTicketModule } from 'src/app/components/create-ticket/create-ticket.module';
+import { NoEventsModule } from 'src/app/components/no-events/no-events.module';
 registerLocaleData(localeEs);
 @NgModule({
   imports: [
@@ -24,9 +28,12 @@ registerLocaleData(localeEs);
     VerifyQrModule,
     InicialesModule,
     GiftEventModule,
-    RouterModule
+    RouterModule,
+    CreateEventModule,
+    CreateTicketModule,
+    NoEventsModule
   ],
   declarations: [HomePage],
-  entryComponents: [GiftEventComponent, CreateTicketComponent]
+  entryComponents: [GiftEventComponent, CreateTicketComponent, CreateEventComponent]
 })
 export class HomePageModule { }

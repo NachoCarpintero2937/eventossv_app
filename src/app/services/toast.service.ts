@@ -17,8 +17,9 @@ export class ToastService {
     const toast = await this._toastCtrl.create({
       message: message,
       duration: 2000,
-      position: 'bottom',
-      color: 'dark'
+      position: 'top',
+      icon: 'alert-circle-outline',
+      color: 'secondary'
     });
     toast.present();
   }
@@ -31,6 +32,9 @@ export class ToastService {
       message: message,
       duration: 4500,
       position: 'top',
+      icon: 'close-circle-outline',
+      cssClass: 'error-toast',
+      translucent: true,
       color: 'danger'
     });
     toast.present();
@@ -43,35 +47,31 @@ export class ToastService {
       message: message,
       duration: 4500,
       position: 'top',
+      icon: 'checkmark-circle-outline',
+      cssClass: 'success-toast',
+      translucent: true,
       color: 'success'
     });
     toast.present();
   }
-  async presentConfirm(header: any, message: any, onOk: boolean) {
+
+
+  async presentConfirm(header: any, message: any, onOk?: boolean) {
     let buttons = [];
-    if (onOk) {
-      buttons.push({
-        text: 'Cancelar',
-        role: 'cancel',
-        cssClass: 'secondary',
-        handler: () => {
-          this.confirm.emit(false);
-        }
-      });
-      buttons.push({
-        text: 'Aceptar',
-        handler: () => {
-          this.confirm.emit(true);
-        }
-      });
-    } else {
-      buttons.push({
-        text: 'Leido',
-        role: 'cancel',
-        cssClass: 'secondary',
-        handler: () => { }
-      });
-    }
+    buttons.push({
+      text: 'Cancelar',
+      role: 'cancel',
+      cssClass: 'secondary',
+      handler: () => {
+        this.confirm.emit(false);
+      }
+    });
+    buttons.push({
+      text: 'Aceptar',
+      handler: () => {
+        this.confirm.emit(true);
+      }
+    });
     const alert = await this._alertCtrl.create({
       header: header,
       message: message,
@@ -79,6 +79,7 @@ export class ToastService {
     });
     await alert.present();
   }
+
   async present() {
     this.isLoading = true;
     return await this._loadingCtrl.create({
@@ -91,10 +92,12 @@ export class ToastService {
       });
     });
   }
+
   async dismiss() {
     this.isLoading = false;
     return await this._loadingCtrl.dismiss().then(() => console.log('dismissed'));
   }
+
 
   async presentSuccessConexion(message: any) {
     if (await this._toastCtrl.getTop()) {

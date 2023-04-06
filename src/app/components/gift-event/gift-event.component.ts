@@ -19,7 +19,8 @@ export class GiftEventComponent implements OnInit {
 
   form = this._fb.group({
     email: [null, [Validators.required, Validators.email]],
-    quantity: [null, Validators.required],
+    confirmEmail: [null, [Validators.required, Validators.email]],
+    quantity: [null, [Validators.required, Validators.max(5)]],
     name: [null, Validators.required],
     surname: [null, Validators.required],
     adult: [1],
@@ -38,21 +39,22 @@ export class GiftEventComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.data)
     if (this.form.valid) {
-      this.cargando = true;
-      this._apiSv.post('ticket/' + this.data?.id + '/gift', this.form.getRawValue()).then((r: any) => {
-        if (r?.status != 'failure') {
-          this._toastSv.presentSuccess("Tickets enviados a " + this.form.get('email')?.value);
+      if (this.form.get('email')?.value == this.form.get('confirmEmail')?.value) {
+        this.cargando = true;
+        this._apiSv.post('ticket/' + this.data?.id + '/gift', this.form.getRawValue()).then((r: any) => {
+          if (r?.status != 'failure') {
+            this._toastSv.presentSuccess("Tickets enviados a " + this.form.get('email')?.value);
+            this.cargando = false;
+            this.close();
+          } else {
+            throw new Error(r?.message);
+          }
+        }).catch(e => {
+          this._toastSv.presentError("Hubo un error al enviar los tickets");
           this.cargando = false;
-          this.close();
-        } else {
-          throw new Error(r?.message);
-        }
-      }).catch(e => {
-        this._toastSv.presentError("Hubo un error al enviar los tickets");
-        this.cargando = false;
-      });
+        });
+      }
     } else {
       this._toastSv.presentToast("Complete todos los campos");
     }

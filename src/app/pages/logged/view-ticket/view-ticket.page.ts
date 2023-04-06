@@ -14,7 +14,10 @@ export class ViewTicketPage implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
     private navCtrl: NavController,
     private _apiSv: ApiService,
-    private _modalCtrl: ModalController) { }
+    private _modalCtrl: ModalController) {
+    // Cerramos modales si venimos de eventos
+    this._modalCtrl.dismiss();
+  }
   id!: number;
   cargando!: boolean;
   event: any;

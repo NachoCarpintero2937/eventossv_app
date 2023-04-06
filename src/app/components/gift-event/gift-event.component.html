@@ -23,7 +23,15 @@
       <ion-input formControlName="email"></ion-input>
     </ion-item>
     <ion-item class="background-item">
-      <ion-label position="floating" class="label_input">Cantaidad</ion-label>
+      <ion-label position="floating" class="label_input">Confirmar email</ion-label>
+      <ion-input formControlName="confirmEmail"></ion-input>
+    </ion-item>
+    <div class="error-email"
+      *ngIf="form.get('email')?.value != form.get('confirmEmail')?.value  && form.get('email')?.value &&  form.get('confirmEmail')?.value">
+      Los email no coinciden
+    </div>
+    <ion-item class="background-item">
+      <ion-label position="floating" class="label_input">Cantidad</ion-label>
       <ion-input formControlName="quantity" type="number"></ion-input>
     </ion-item>
   </form>

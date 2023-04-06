@@ -8,6 +8,18 @@
 </ion-header>
 
 <ion-content>
+  <ion-col *ngIf="data && ticket">
+    <ion-card class="card-home" *ngIf="!cargando" [ngStyle]="{'background-image': 'url('+data?.img+')'}">
+      <ion-card-header>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="label active" [ngClass]="{'inactive' : !data?.name}"></div>
+        <span class="title-event">
+          {{data?.name ? data?.name : 'No hay evento activo'}}
+        </span>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
   <form [formGroup]="form">
     <ion-item class="background-item">
       <ion-label position="floating" class="label_input">Nombre</ion-label>

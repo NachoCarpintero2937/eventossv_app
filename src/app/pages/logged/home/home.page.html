@@ -35,17 +35,20 @@
         <img src="./assets/img/logo.png" width="100" alt="">
       </div>
     </div>
-    <ion-card class="card-home" *ngIf="!cargando" (click)="event ? openCreateAndEditEvent(event) : null">
-      <ion-card-header>
-      </ion-card-header>
-      <ion-card-content>
-        <div class="label active" [ngClass]="{'inactive' : !event?.name}"></div>
-        <span class="title-event">
-          {{event?.name ? event?.name : 'No hay evento activo'}}
-        </span>
-      </ion-card-content>
-    </ion-card>
-
+    <ion-slides (ionSlideDidChange)="sliderChanges($event)" pager="true" [options]="slideOpts">
+      <ion-slide *ngFor="let event of events" #slide>
+        <ion-card class="card-home" *ngIf="!cargando" (click)="event ? openCreateAndEditEvent(event) : null">
+          <ion-card-header>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="label active" [ngClass]="{'inactive' : !event?.name}"></div>
+            <span class="title-event">
+              {{event?.name ? event?.name : 'No hay evento activo'}}
+            </span>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
     <ion-skeleton-text [animated]="true"
       style="height:20vh;margin-left:20px;margin-right: 20px;border-radius:20px;width:90%;margin-top:20px"
       *ngIf=" cargando"></ion-skeleton-text>

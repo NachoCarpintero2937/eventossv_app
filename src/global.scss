@@ -24,3 +24,13 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+.success-toast {
+    color: white !important;
+    // background-¿: rgba(92, 179, 89, 0.8509803922) !important;
+}
+
+.error-toast {
+    color: white !important;
+}

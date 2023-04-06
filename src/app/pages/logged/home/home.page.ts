@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit, OnChanges, ViewChild, SimpleChanges } from '@angular/core';
+import { IonSlides, ModalController } from '@ionic/angular';
+import { CreateEventComponent } from 'src/app/components/create-event/create-event.component';
 import { CreateTicketComponent } from 'src/app/components/create-ticket/create-ticket.component';
 import { GiftEventComponent } from 'src/app/components/gift-event/gift-event.component';
+import { Events } from 'src/app/interfaces/events';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastService } from 'src/app/services/toast.service';
@@ -11,17 +13,33 @@ import { ToastService } from 'src/app/services/toast.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss']
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, OnChanges {
+  @ViewChild('slide') slide: any;
   constructor(
     private apiSv: ApiService,
     private _toastSv: ToastService,
     public _authSv: AuthService,
-    private _modalCtrl: ModalController) { }
+    private _modalCtrl: ModalController) {
+    this._toastSv.confirm.subscribe((r: boolean) => {
+      if (r)
+        this.openCreateAndEditTicket()
+    })
+  }
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400
+  }
   event: any;
+  events: Events[] = [];
   cargando: boolean = false;
   ngOnInit(): void {
 
   }
+
+  ngOnChanges(): void {
+    console.log(this.slide)
+  }
+
 
   ionViewDidEnter() {
     this.getEvent();
@@ -34,6 +52,7 @@ export class HomePage implements OnInit {
       if (r?.events[0].active == 1) {
         this.event = r?.events[0];
       }
+      this.getEvents()
     }).catch((e: any) => {
       this.cargando = false;
       this._toastSv.presentError("Error en el servidor");
@@ -44,6 +63,16 @@ export class HomePage implements OnInit {
     setTimeout(() => {
       event.target.complete();
     }, 750);
+  }
+  getEvents() {
+    this.cargando = true;
+    this.apiSv.get('event/index').then((r: any) => {
+      this.cargando = false;
+      this.events = r?.events;
+    }).catch((e: any) => {
+      this.cargando = false;
+      this._toastSv.presentError("Error en el servidor");
+    })
   }
 
   async openGift() {
@@ -76,11 +105,36 @@ export class HomePage implements OnInit {
     });
   }
 
+  async openCreateAndEditEvent(event?: any) {
+    const modal = await this._modalCtrl.create({
+      component: CreateEventComponent,
+      componentProps: {
+        event: event ? event : null
+      }
+    });
+    modal.present();
+    modal.onDidDismiss().then((respuesta) => {
+      if (respuesta && respuesta.data) {
+        this.event = respuesta.data;
+        this._toastSv.presentConfirm("Asignación de tickets", "¿Querés asignar tickets al último evento creado?")
+        // this.getEvent();
+      }
+    });
+  }
+
   AvaliableTickets(tickets: any) {
     var available = tickets.filter((filter: any) => filter.available == 1);
     if (available[0])
       return true;
     else
       return false;
+  }
+
+  sliderChanges(event: any) {
+    event.target.getActiveIndex().then(
+      (index: any) => {
+        this.event = this.events[index];
+      });
+
   }
 }
