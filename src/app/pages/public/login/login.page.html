@@ -32,7 +32,8 @@
             </ion-grid>
           </ion-item>
           <button class="button login__submit">
-            <span class="button__text" (click)="submit()">Ingresar</span>
+            <span class="button__text" (click)="submit()"> <ion-spinner *ngIf="cargando ;else enviar"></ion-spinner>
+              <ng-template #enviar>Ingresar</ng-template></span>
             <i class="button__icon fas fa-chevron-right"></i>
           </button>
         </form>

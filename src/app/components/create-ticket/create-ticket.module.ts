@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GiftEventComponent } from './gift-event.component';
 import { IonicModule } from '@ionic/angular';
+import { CreateTicketComponent } from './create-ticket.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
-
 @NgModule({
-  declarations: [GiftEventComponent],
+  declarations: [CreateTicketComponent],
   imports: [
     CommonModule,
     IonicModule,
-    ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  exports: [GiftEventComponent]
+  exports: [CreateTicketComponent]
 })
-export class GiftEventModule { }
+export class CreateTicketModule { }

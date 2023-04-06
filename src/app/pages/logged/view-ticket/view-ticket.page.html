@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="back();"> <ion-icon name="chevron-back-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Tickets</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let ticket of event?.tickets" (click)="openCreateAndEditTicket(ticket)">
+    <div class="label" [ngClass]="{'inactive' : ticket?.active == 0, 'active' : ticket?.active == 1}"></div>
+    <ion-card-header>
+      <ion-card-title>{{ticket?.name}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{ticket?.description}}
+    </ion-card-content>
+  </ion-card>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" *ngIf="!cargando">
+    <ion-fab-button (click)="openCreateAndEditTicket()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

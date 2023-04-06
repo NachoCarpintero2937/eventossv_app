@@ -11,7 +11,7 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+  cargando: boolean = false;
   constructor(
     private _fb: FormBuilder,
     private _apiSv: ApiService,
@@ -25,8 +25,8 @@ export class LoginPage implements OnInit {
   }
 
   form = this._fb.group({
-    email: ['user@pigtureit.com', [Validators.required, Validators.email]],
-    password: ['Q1w2e3r4!', Validators.required],
+    email: ['qr@eventossv.com', [Validators.required, Validators.email]],
+    password: ['Qr25032023', Validators.required],
   });
 
   type_password: boolean = true;
@@ -36,12 +36,13 @@ export class LoginPage implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      this._toastSv.present();
+      this.cargando = true;
       this._apiSv.post("login", this.form.getRawValue()).then((r: any) => {
-        this._toastSv.dismiss();
+        this.cargando = false;
         localStorage.setItem("user_data", JSON.stringify(r));
         this._navCtrl.navigateRoot('/logged/tabs');
       }).catch(e => {
+        this.cargando = false;
       })
     }
   }

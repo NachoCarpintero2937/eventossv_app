@@ -22,8 +22,10 @@ const routes: Routes = [
         loadChildren: () => import('./pages/logged/tabs/tabs.module').then(m => m.TabsPageModule)
       },
 
+
     ]
-  }
+  },
+
 
 ];
 @NgModule({

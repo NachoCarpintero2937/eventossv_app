@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ticket ? 'Editar' : 'Crear'}} ticket</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close();">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-item class="background-item">
+      <ion-label position="floating" class="label_input">Nombre</ion-label>
+      <ion-input formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item class="background-item">
+      <ion-label position="floating" class="label_input">Descripcion</ion-label>
+      <ion-textarea formControlName="description"></ion-textarea>
+    </ion-item>
+    <ion-item class="background-item">
+      <ion-label position="floating" class="label_input">Cantidad de tickets en venta</ion-label>
+      <ion-input formControlName="quantity" type="number"></ion-input>
+    </ion-item>
+    <ion-item class="background-item">
+      <ion-label position="floating" class="label_input">Límite de compra por persona</ion-label>
+      <ion-input formControlName="limit_buy" type="number"></ion-input>
+    </ion-item>
+    <ion-item class="background-item">
+      <ion-label position="floating" class="label_input">Precio</ion-label>
+      <ion-input formControlName="price" type="number"></ion-input>
+    </ion-item>
+    <div class="toggle">
+      <span>
+        Activar Ticket
+      </span>
+      <ion-toggle formControlName="available"></ion-toggle>
+    </div>
+  </form>
+  <div class="div-btn">
+    <ion-button color="primary" [disabled]="cargando" (click)="submit();"> <ion-spinner
+        *ngIf="cargando ;else enviar"></ion-spinner>
+      <ng-template #enviar>Enviar</ng-template>
+    </ion-button>
+  </div>
+</ion-content>

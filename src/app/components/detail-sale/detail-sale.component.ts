@@ -15,7 +15,12 @@ export class DetailSaleComponent implements OnInit {
     private _fb: FormBuilder,
     private _modalCtrl: ModalController,
     private _apiSv: ApiService,
-    private _toastSv: ToastService) { }
+    private _toastSv: ToastService) {
+    this._toastSv.confirm.subscribe((r) => {
+      if (r)
+        this.apiResendEmail();
+    });
+  }
   data!: any;
   ngOnInit() {
     this.getFormValues();
@@ -50,14 +55,21 @@ export class DetailSaleComponent implements OnInit {
   }
 
   resendEmail() {
+    this._toastSv.presentConfirm("Reenviar tickets a " + this.data?.email, '', true);
+  }
+
+  apiResendEmail() {
     this._toastSv.present()
     this._apiSv._getAction({ sale_id: this.data.id }, "sale/reenviarTickets").then((r: any) => {
       this._toastSv.dismiss()
       if (r.status)
         this._toastSv.presentSuccess("Tickets reenviados a la casilla " + this.data?.email);
+      else
+        throw new Error(r?.message);
+
     }).catch(e => {
-      this._toastSv.dismiss();
       this._toastSv.presentError("Hubo un problema con el servidor");
+      this._toastSv.dismiss();
     })
   }
 

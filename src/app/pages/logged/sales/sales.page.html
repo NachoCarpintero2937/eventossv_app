@@ -32,9 +32,9 @@
   <ion-virtual-scroll [items]="sales" approxItemHeight="320px" *ngIf="!cargando">
     <ion-item *virtualItem="let sale" (click)="detailSale(sale)">
       <div class="position">
-        <div class="badge blue">{{sale?.quantity}}</div>
-        <app-iniciales color="white" [paid]="sale?.paid" background="#1956c596"
-          [text]="sale?.name + ' ' + sale?.surname" width="40px" height="40px" *ngIf="!cargando">
+        <div class="badge orange">{{sale?.quantity}}</div>
+        <app-iniciales color="orange" [paid]="sale?.paid" background="#ffffff" [text]="sale?.name + ' ' + sale?.surname"
+          width="40px" height="40px" *ngIf="!cargando">
         </app-iniciales>
       </div>
       <ion-label>

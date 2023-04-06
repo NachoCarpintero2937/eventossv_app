@@ -4,6 +4,7 @@ import { ModalController } from '@ionic/angular';
 import { ActionsheetComponent } from 'src/app/components/actionsheet/actionsheet.component';
 import { ScannerComponent } from 'src/app/components/scanner/scanner.component';
 import { VerifyQrComponent } from 'src/app/components/verify-qr/verify-qr.component';
+import { CommonService } from 'src/app/services/common.service';
 import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
@@ -15,7 +16,13 @@ export class TabsPage implements OnInit {
 
   constructor(
     private _modalCtrl: ModalController,
-    private _toastSv: ToastService) { }
+    private _toastSv: ToastService,
+    private _commonSv: CommonService) {
+    // esto cierra todos los modals abiertos en caso de mate la sesion el interceptor
+    this._commonSv.closeModal.subscribe(r => {
+      this._modalCtrl.dismiss();
+    })
+  }
   ngOnInit(): void {
 
   }

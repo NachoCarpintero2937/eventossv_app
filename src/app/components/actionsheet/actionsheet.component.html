@@ -6,10 +6,9 @@
     </div>
     <div class="background-item" lines="none">
       <div class="avatar-name">
-        <ion-avatar slot="start">
-          <img alt="Silhouette of a person's head"
-            src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png" />
-        </ion-avatar>
+        <app-iniciales color="orange" background="white" [text]="_authSv.getCurrentUser()?.user?.name" width="40px"
+          height="40px" *ngIf="!cargando">
+        </app-iniciales>
         <ion-label class="ion-label">
           {{_authSv.getCurrentUser()?.user?.name}}
         </ion-label>

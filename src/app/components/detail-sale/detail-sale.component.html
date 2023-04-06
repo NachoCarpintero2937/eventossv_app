@@ -9,7 +9,7 @@
 
 <ion-content [fullscreen]="true">
   <ion-item lines="none" class="ion-margin">
-    <app-iniciales color="white" [paid]="data?.paid" background="#1956c596" [text]="data?.name +' '+ data?.surname"
+    <app-iniciales color="orange" [paid]="data?.paid" background="#ffffff" [text]="data?.name +' '+ data?.surname"
       width="40px" height="40px">
     </app-iniciales>
     <ion-label class="ion-padding name">
@@ -66,16 +66,25 @@
     </ion-item>
   </form>
 
-  <div class="div-qr">
-    <div *ngFor="let qr of data?.tickets;let i = index" class="center-title-qr">
-      <ion-label>
+  <!-- <div class="div-qr" *ngIf="data?.paid != 0">
+    <div *ngFor="let qr of data?.tickets;let i = index" class="center-title-qr "
+      [ngClass]="{'scanned-qr' : qr?.used_at != 'null' , 'no-scanned-qr' : qr?.used_at == null}">
+      <ion-label class="ion-padding">
         Entrada N° {{i+1}}
       </ion-label>
       <qrcode [qrdata]="'https://eventossv.com/new/#/logged/check/'+qr?.id+'@'+qr?.id" [width]="256"
         [errorCorrectionLevel]="'M'"></qrcode>
+      <ion-label *ngIf="!qr?.used_at;else scaneado" class="ion-padding">
+        Sin escanear
+      </ion-label>
+      <ng-template #scaneado>
+        <ion-label class="ion-padding">
+          Escaneado el día {{qr?.used_at | date : 'dd/MMM'}}
+        </ion-label>
+      </ng-template>
     </div>
 
-  </div>
+  </div> -->
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button (click)="resendEmail()">

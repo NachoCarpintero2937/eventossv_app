@@ -30,7 +30,7 @@ export class ToastService {
     const toast = await this._toastCtrl.create({
       message: message,
       duration: 4500,
-      position: 'bottom',
+      position: 'top',
       color: 'danger'
     });
     toast.present();
@@ -42,16 +42,16 @@ export class ToastService {
     const toast = await this._toastCtrl.create({
       message: message,
       duration: 4500,
-      position: 'bottom',
+      position: 'top',
       color: 'success'
     });
     toast.present();
   }
-  async presentConfirm(header: any, message: any, onOk = null) {
+  async presentConfirm(header: any, message: any, onOk: boolean) {
     let buttons = [];
     if (onOk) {
       buttons.push({
-        text: 'CANCELAR',
+        text: 'Cancelar',
         role: 'cancel',
         cssClass: 'secondary',
         handler: () => {

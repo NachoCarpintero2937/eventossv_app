@@ -11,6 +11,8 @@ import localeEs from '@angular/common/locales/es';
 import { InicialesModule } from 'src/app/components/iniciales/iniciales.module';
 import { GiftEventComponent } from 'src/app/components/gift-event/gift-event.component';
 import { GiftEventModule } from 'src/app/components/gift-event/gift-event.module';
+import { RouterModule } from '@angular/router';
+import { CreateTicketComponent } from 'src/app/components/create-ticket/create-ticket.component';
 registerLocaleData(localeEs);
 @NgModule({
   imports: [
@@ -21,9 +23,10 @@ registerLocaleData(localeEs);
     HomePageRoutingModule,
     VerifyQrModule,
     InicialesModule,
-    GiftEventModule
+    GiftEventModule,
+    RouterModule
   ],
   declarations: [HomePage],
-  entryComponents: [GiftEventComponent]
+  entryComponents: [GiftEventComponent, CreateTicketComponent]
 })
 export class HomePageModule { }

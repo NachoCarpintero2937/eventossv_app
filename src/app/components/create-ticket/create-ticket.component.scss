@@ -25,3 +25,13 @@ ion-spinner * {
     bottom: 30%;
     margin-left: -2em;
 }
+
+.toggle {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+
+    span {
+        font-weight: 600;
+    }
+}

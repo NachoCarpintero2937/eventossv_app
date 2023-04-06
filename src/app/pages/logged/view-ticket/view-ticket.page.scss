@@ -1,0 +1,24 @@
+.label {
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top: 35px tomato solid;
+    border-left: 35px tomato solid;
+    border-right: 35px transparent solid;
+    border-bottom: 35px transparent solid;
+    color: #fff;
+    z-index: 1;
+    top: -9px;
+    margin-left: -25px;
+    border-top-left-radius: 15px;
+}
+
+.active {
+    border-top: 30px rgba(92, 179, 89, 0.8509803922) solid !important;
+    border-left: 43px rgba(92, 179, 89, 0.8509803922) solid !important;
+}
+
+.inactive {
+    border-top: 30px #bd5b4a solid !important;
+    border-left: 43px #bd5b4a solid !important;
+}

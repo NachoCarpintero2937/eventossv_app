@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('../sales/sales.module').then(m => m.SalesPageModule)
       },
       {
+        path: 'view-ticket',
+        loadChildren: () => import('../view-ticket/view-ticket.module').then(m => m.CreateTicketPageModule)
+      },
+      {
         path: '',
         redirectTo: '/logged/tabs/landing',
         pathMatch: 'full'

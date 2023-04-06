@@ -9,6 +9,28 @@
 
 <ion-content [fullscreen]="true">
 
-
-
+  <form [formGroup]="form">
+    <ion-item class="background-item">
+      <ion-label position="floating" class="label_input">Nombre</ion-label>
+      <ion-input formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item class="background-item">
+      <ion-label position="floating" class="label_input">Apellido</ion-label>
+      <ion-input formControlName="surname"></ion-input>
+    </ion-item>
+    <ion-item class="background-item">
+      <ion-label position="floating" class="label_input">Email</ion-label>
+      <ion-input formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item class="background-item">
+      <ion-label position="floating" class="label_input">Cantaidad</ion-label>
+      <ion-input formControlName="quantity" type="number"></ion-input>
+    </ion-item>
+  </form>
+  <div class="div-btn">
+    <ion-button color="primary" [disabled]="cargando" (click)="submit();"> <ion-spinner
+        *ngIf="cargando ;else enviar"></ion-spinner>
+      <ng-template #enviar>Enviar</ng-template>
+    </ion-button>
+  </div>
 </ion-content>

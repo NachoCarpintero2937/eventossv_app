@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 import { GlobalService } from '../services/global.service';
 import { Observable, throwError } from 'rxjs';
 import { ToastService } from '../services/toast.service';
+import { CommonService } from '../services/common.service';
 
 @Injectable()
 export class HttpconfigInterceptor implements HttpInterceptor {
@@ -21,9 +22,8 @@ export class HttpconfigInterceptor implements HttpInterceptor {
   constructor
     (
       private _authSv: AuthService,
-      private _router: Router,
       private _alertSv: ToastService,
-      private _globalsSv: GlobalService
+      private _commonSv: CommonService
     ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -60,9 +60,11 @@ export class HttpconfigInterceptor implements HttpInterceptor {
             this._alertSv.presentError("Error en el servidor (500)");
             break;
           case 401:
+            this._commonSv.closeModal.emit(true)
             this._authSv.logout("Sesión expirada,ingrese nuevamente");
             break;
           case 403:
+            this._commonSv.closeModal.emit(true)
             this._authSv.logout("Sesión expirada,ingrese nuevamente");
             break;
           case 404:
