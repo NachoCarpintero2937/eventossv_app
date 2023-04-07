@@ -254,6 +254,7 @@ ion-card-title {
 }
 
 .header-home {
+    padding-top: 30px !important;
     background: linear-gradient(0deg, rgba(235, 235, 235, 1) 0%, rgba(241, 143, 13, 1) 100%);
     z-index: 2;
     position: relative;
@@ -324,5 +325,6 @@ ion-card-title {
         font-family: sans-serif;
         font-weight: 900;
     }
+
 
 }
