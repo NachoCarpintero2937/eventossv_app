@@ -41,7 +41,7 @@
           <ion-card-header>
           </ion-card-header>
           <ion-card-content>
-            <div class="label active" [ngClass]="{'inactive' : !event?.name}"></div>
+            <div class="label" [ngClass]="{'inactive' : event?.active ==  0, 'active' : event?.active ==1 }"></div>
             <span class="title-event">
               {{event?.name ? event?.name : 'No hay evento activo'}}
             </span>
@@ -94,7 +94,8 @@
   <div *ngIf="event?.tickets?.length == 0 && !cargando">
     <app-no-events></app-no-events>
   </div>
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end" *ngIf="!cargando">
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" *ngIf="!cargando" #fab>
     <ion-fab-button>
       <ion-icon name="add-outline"></ion-icon>
     </ion-fab-button>
@@ -106,7 +107,7 @@
         <ion-icon name="calendar-outline"></ion-icon>
       </ion-fab-button>
       <ion-fab-button color="primary" (click)="openGift()"
-        *ngIf="event?.tickets?.length >0 && AvaliableTickets(event?.tickets)&&event?.active == 1">
+        *ngIf="event?.tickets?.length >0 && event?.active == 1 && AvaliableTickets(event?.tickets)">
         <ion-icon name="gift-outline"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>

@@ -4,5 +4,6 @@ export interface Events {
     description: string,
     date: string,
     price: number,
-    id: number
+    id: number,
+    active: number
 }

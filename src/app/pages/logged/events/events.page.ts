@@ -16,12 +16,15 @@ export class EventsPage implements OnInit {
   cargando: boolean = false;
   events: Events[] = [];
   event!: Events;
+  numbers: any;
+
   constructor(
     private _apiSv: ApiService,
     private _navctrl: NavController,
     private _modalCtrl: ModalController,
     private _toastSv: ToastService
   ) {
+    this.numbers = Array(10).fill(0).map((x, i) => i);
 
     this._toastSv.confirm.subscribe((r: boolean) => {
       if (r)
@@ -79,5 +82,12 @@ export class EventsPage implements OnInit {
         // this.getEvent();
       }
     });
+  }
+
+  doRefresh(event: any) {
+    this.getEvents();
+    setTimeout(() => {
+      event.target.complete();
+    }, 750);
   }
 }

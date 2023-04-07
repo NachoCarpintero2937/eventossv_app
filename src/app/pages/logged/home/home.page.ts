@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, ViewChild, SimpleChanges } from '@angular/core';
-import { IonSlides, ModalController } from '@ionic/angular';
+import { IonFab, IonSlides, ModalController } from '@ionic/angular';
 import { CreateEventComponent } from 'src/app/components/create-event/create-event.component';
 import { CreateTicketComponent } from 'src/app/components/create-ticket/create-ticket.component';
 import { GiftEventComponent } from 'src/app/components/gift-event/gift-event.component';
@@ -13,8 +13,9 @@ import { ToastService } from 'src/app/services/toast.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss']
 })
-export class HomePage implements OnInit, OnChanges {
+export class HomePage implements OnInit {
   @ViewChild('slide') slide: any;
+  @ViewChild('fab') fab!: IonFab;
   constructor(
     private apiSv: ApiService,
     private _toastSv: ToastService,
@@ -36,11 +37,6 @@ export class HomePage implements OnInit, OnChanges {
 
   }
 
-  ngOnChanges(): void {
-    console.log(this.slide)
-  }
-
-
   ionViewDidEnter() {
     this.getEvent();
   }
@@ -58,12 +54,14 @@ export class HomePage implements OnInit, OnChanges {
       this._toastSv.presentError("Error en el servidor");
     })
   }
+
   doRefresh(event: any) {
     this.getEvent();
     setTimeout(() => {
       event.target.complete();
     }, 750);
   }
+
   getEvents() {
     this.cargando = true;
     this.apiSv.get('event/index').then((r: any) => {
@@ -123,6 +121,7 @@ export class HomePage implements OnInit, OnChanges {
   }
 
   AvaliableTickets(tickets: any) {
+    console.log(tickets)
     var available = tickets.filter((filter: any) => filter.available == 1);
     if (available[0])
       return true;
@@ -131,6 +130,7 @@ export class HomePage implements OnInit, OnChanges {
   }
 
   sliderChanges(event: any) {
+    this.fab.close();
     event.target.getActiveIndex().then(
       (index: any) => {
         this.event = this.events[index];

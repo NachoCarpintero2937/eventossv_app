@@ -10,7 +10,12 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-virtual-scroll [items]="events" approxItemHeight="320px">
+  <ion-refresher class="ion-margin-top" slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200"
+    (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingText="" refreshingSpinner="circular">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-virtual-scroll [items]="events" approxItemHeight="320px" *ngIf="!cargando">
     <ion-item *virtualItem="let event" lines="none">
       <ion-card class="card-event" [ngStyle]="{'background-image': 'url('+event?.img+')'}" *ngIf="!cargando"
         (click)="openCreateAndEditEvent(event)">
@@ -27,6 +32,11 @@
       </ion-card>
     </ion-item>
   </ion-virtual-scroll>
+  <div *ngFor="let sale of numbers">
+    <ion-skeleton-text [animated]="true"
+      style="height:20vh;margin-left:20px;margin-right: 20px;border-radius:20px;width:90%;margin-top:20px"
+      *ngIf="cargando"></ion-skeleton-text>
+  </div>
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button (click)="openCreateAndEditEvent()">
       <ion-icon name="add-outline"></ion-icon>
