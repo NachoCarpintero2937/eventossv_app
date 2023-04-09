@@ -1,0 +1,41 @@
+<div class="header">
+  <div class="circle">
+    <div class="img">
+      <img src="./assets/img/logo.png" width="100" alt="">
+    </div>
+    <app-iniciales color="orange" background="white" [text]="_authSv.getCurrentUser()?.user?.name" width="100px"
+      height="100px" font_size="30px" *ngIf="!cargando" class="iniciales">
+    </app-iniciales>
+    <div class="name">
+      <ion-label>
+        {{_authSv.getCurrentUser()?.user?.name}}
+      </ion-label>
+    </div>
+  </div>
+</div>
+<ion-content>
+
+
+  <ion-list>
+    <form [formGroup]="form">
+      <ion-item lines="none">
+        <ion-label position="stacked" class="label_input">Nombre</ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label position="stacked" class="label_input">Rol</ion-label>
+        <ion-input formControlName="rol" [disabled]="true"></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label position="stacked" class="label_input">Email</ion-label>
+        <ion-input formControlName="email"></ion-input>
+      </ion-item>
+    </form>
+  </ion-list>
+
+  <div class="div-btn">
+    <ion-button color="primary" [disabled]="cargando"> <ion-spinner *ngIf="cargando ;else enviar"></ion-spinner>
+      <ng-template #enviar>Enviar</ng-template>
+    </ion-button>
+  </div>
+</ion-content>

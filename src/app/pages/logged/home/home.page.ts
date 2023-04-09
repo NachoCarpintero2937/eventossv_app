@@ -34,7 +34,7 @@ export class HomePage implements OnInit {
   events: Events[] = [];
   cargando: boolean = false;
   ngOnInit(): void {
-
+    this._toastSv.presentError("test")
   }
 
   ionViewDidEnter() {
@@ -121,7 +121,6 @@ export class HomePage implements OnInit {
   }
 
   AvaliableTickets(tickets: any) {
-    console.log(tickets)
     var available = tickets.filter((filter: any) => filter.available == 1);
     if (available[0])
       return true;

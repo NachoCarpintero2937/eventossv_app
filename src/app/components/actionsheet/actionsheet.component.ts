@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastService } from 'src/app/services/toast.service';
@@ -16,7 +16,9 @@ export class ActionsheetComponent implements OnInit {
     private modalCtrl: ModalController,
     private _apiSv: ApiService,
     private _toastSv: ToastService,
-    public _authSv: AuthService) { }
+    public _authSv: AuthService,
+    private _navCtrl: NavController,
+    private _modalCtrl: ModalController) { }
 
   ngOnInit() {
     this.getEvent();
@@ -39,5 +41,10 @@ export class ActionsheetComponent implements OnInit {
   logout() {
     this.close();
     this._authSv.logout("Sesión cerrada correctamente");
+  }
+  goToProfile() {
+    this._navCtrl.navigateRoot(['logged/tabs/profile']).then((r) => {
+      this._modalCtrl.dismiss();
+    })
   }
 }

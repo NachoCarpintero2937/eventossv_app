@@ -66,7 +66,7 @@
     </ion-item>
   </form>
 
-  <!-- <div class="div-qr" *ngIf="data?.paid != 0">
+  <div class="div-qr" *ngIf="data?.paid != 0">
     <div *ngFor="let qr of data?.tickets;let i = index" class="center-title-qr "
       [ngClass]="{'scanned-qr' : qr?.used_at != 'null' , 'no-scanned-qr' : qr?.used_at == null}">
       <ion-label class="ion-padding">
@@ -84,7 +84,7 @@
       </ng-template>
     </div>
 
-  </div> -->
+  </div>
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button (click)="resendEmail()">

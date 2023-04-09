@@ -34,7 +34,6 @@ export class ToastService {
       position: 'top',
       icon: 'close-circle-outline',
       cssClass: 'error-toast',
-      translucent: true,
       color: 'danger'
     });
     toast.present();
@@ -49,7 +48,6 @@ export class ToastService {
       position: 'top',
       icon: 'checkmark-circle-outline',
       cssClass: 'success-toast',
-      translucent: true,
       color: 'success'
     });
     toast.present();

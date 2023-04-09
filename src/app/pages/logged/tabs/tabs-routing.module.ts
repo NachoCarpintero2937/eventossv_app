@@ -24,6 +24,10 @@ const routes: Routes = [
         loadChildren: () => import('../view-ticket/view-ticket.module').then(m => m.CreateTicketPageModule)
       },
       {
+        path: 'profile',
+        loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule)
+      },
+      {
         path: '',
         redirectTo: '/logged/tabs/landing',
         pathMatch: 'full'

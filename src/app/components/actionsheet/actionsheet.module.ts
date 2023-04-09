@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule, IonModal } from '@ionic/angular';
 import { ActionsheetComponent } from './actionsheet.component';
 import { InicialesModule } from '../iniciales/iniciales.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -11,7 +12,8 @@ import { InicialesModule } from '../iniciales/iniciales.module';
   imports: [
     CommonModule,
     IonicModule,
-    InicialesModule
+    InicialesModule,
+    RouterModule
   ],
   exports: [ActionsheetComponent]
 })

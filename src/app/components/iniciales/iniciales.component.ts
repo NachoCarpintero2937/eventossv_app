@@ -12,6 +12,7 @@ export class InicialesComponent implements OnInit {
   @Input() background!: string;
   @Input() width: string = '32px';
   @Input() height: string = '32px';
+  @Input() font_size: string = '15px';
   constructor() { }
 
   ngOnInit() { }

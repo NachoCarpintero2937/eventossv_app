@@ -26,14 +26,14 @@
   </div>
 
   <ion-list>
-    <ion-item lines="none">
+    <ion-item lines="none" (click)="goToProfile();">
       <ion-icon name="person-outline" slot="start"></ion-icon>
       <ion-button fill="clear" class="btn">Perfil</ion-button>
       <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
     </ion-item>
-    <ion-item lines="none">
+    <ion-item lines="none" (click)="logout();">
       <ion-icon name="exit-outline" slot="start"></ion-icon>
-      <ion-button fill="clear" class="btn" (click)="logout();">Cerrar sesión</ion-button>
+      <ion-button fill="clear" class="btn">Cerrar sesión</ion-button>
       <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
     </ion-item>
   </ion-list>
