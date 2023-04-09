@@ -34,7 +34,6 @@ export class HomePage implements OnInit {
   events: Events[] = [];
   cargando: boolean = false;
   ngOnInit(): void {
-    this._toastSv.presentError("test")
   }
 
   ionViewDidEnter() {
