@@ -20,7 +20,7 @@
     <form [formGroup]="form">
       <ion-item lines="none">
         <ion-label position="stacked" class="label_input">Nombre</ion-label>
-        <ion-input formControlName="name"></ion-input>
+        <ion-input formControlName="name" [disabled]="true"></ion-input>
       </ion-item>
       <ion-item lines="none">
         <ion-label position="stacked" class="label_input">Rol</ion-label>
@@ -28,14 +28,14 @@
       </ion-item>
       <ion-item lines="none">
         <ion-label position="stacked" class="label_input">Email</ion-label>
-        <ion-input formControlName="email"></ion-input>
+        <ion-input formControlName="email" [disabled]="true"></ion-input>
       </ion-item>
     </form>
   </ion-list>
 
-  <div class="div-btn">
+  <!-- <div class="div-btn">
     <ion-button color="primary" [disabled]="cargando"> <ion-spinner *ngIf="cargando ;else enviar"></ion-spinner>
       <ng-template #enviar>Enviar</ng-template>
     </ion-button>
-  </div>
+  </div> -->
 </ion-content>

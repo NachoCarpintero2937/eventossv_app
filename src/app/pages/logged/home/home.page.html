@@ -37,7 +37,7 @@
     </div>
     <ion-slides (ionSlideDidChange)="sliderChanges($event)" pager="true" [options]="slideOpts">
       <ion-slide *ngFor="let event of events" #slide>
-        <ion-card class="card-home" *ngIf="!cargando" (click)="event ? openCreateAndEditEvent(event) : null">
+        <ion-card class="card-home" *ngIf="!cargando">
           <ion-card-header>
           </ion-card-header>
           <ion-card-content>
@@ -61,7 +61,7 @@
       style="width:300px;height:25px;"></ion-skeleton-text>
   </ion-item>
   <div class="ticket-cont" *ngIf="!cargando && event?.tickets?.length >0">
-    <div class="father-div-ticket" *ngFor="let ticket of event?.tickets" (click)="openCreateAndEditTicket(ticket)">
+    <div class="father-div-ticket" *ngFor="let ticket of event?.tickets">
       <div class="ticket" *ngIf="ticket?.available">
 
         <!-- <div class="brand-icon">
@@ -95,7 +95,7 @@
     <app-no-events></app-no-events>
   </div>
 
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end" *ngIf="!cargando" #fab>
+  <!-- <ion-fab slot="fixed" vertical="bottom" horizontal="end" *ngIf="!cargando" #fab>
     <ion-fab-button>
       <ion-icon name="add-outline"></ion-icon>
     </ion-fab-button>
@@ -111,5 +111,5 @@
         <ion-icon name="gift-outline"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
-  </ion-fab>
+  </ion-fab> -->
 </ion-content>
