@@ -120,11 +120,15 @@ export class HomePage implements OnInit {
   }
 
   AvaliableTickets(tickets: any) {
-    var available = tickets.filter((filter: any) => filter.available == 1);
-    if (available[0])
-      return true;
-    else
+    if (tickets) {
+      var available = tickets.filter((filter: any) => filter.available == 1);
+      if (available[0])
+        return true;
+      else
+        return false;
+    } else {
       return false;
+    }
   }
 
   sliderChanges(event: any) {
