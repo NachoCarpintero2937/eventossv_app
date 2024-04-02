@@ -72,7 +72,7 @@
       <ion-label class="ion-padding">
         Entrada N° {{i+1}}
       </ion-label>
-      <qrcode [qrdata]="'https://eventossv.com/new/#/logged/check/'+qr?.id+'@'+qr?.id" [width]="256"
+      <qrcode [qrdata]="'https://ticketsync.com.ar/#/logged/check/'+qr?.id+'@'+qr?.id" [width]="256"
         [errorCorrectionLevel]="'M'"></qrcode>
       <ion-label *ngIf="!qr?.used_at;else scaneado" class="ion-padding">
         Sin escanear

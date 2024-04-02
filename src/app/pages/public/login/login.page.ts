@@ -25,8 +25,8 @@ export class LoginPage implements OnInit {
   }
 
   form = this._fb.group({
-    email: ['qr@eventossv.com', [Validators.required, Validators.email]],
-    password: ['Qr25032023', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required],
   });
 
   type_password: boolean = true;

@@ -32,7 +32,6 @@ export class ActionsheetComponent implements OnInit {
       }
     }).catch((e: any) => {
       this.cargando = false;
-      this._toastSv.presentError("Error en el servidor");
     })
   }
   close() {

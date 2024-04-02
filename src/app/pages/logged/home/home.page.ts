@@ -50,7 +50,6 @@ export class HomePage implements OnInit {
       this.getEvents()
     }).catch((e: any) => {
       this.cargando = false;
-      this._toastSv.presentError("Error en el servidor");
     })
   }
 
@@ -68,7 +67,6 @@ export class HomePage implements OnInit {
       this.events = r?.events;
     }).catch((e: any) => {
       this.cargando = false;
-      this._toastSv.presentError("Error en el servidor");
     })
   }
 
